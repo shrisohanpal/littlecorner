@@ -1,0 +1,42 @@
+{
+  "name": "kalpavrikshcart",
+  "version": "1.0.0",
+  "description": "this is a ecommerce project in mern full stack",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "frontapp": "node backend/frontapp",
+    "expoapp": "npm start --prefix expoapp",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "app": "concurrently \"npm run server\" \"npm run expoapp\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "author": "DKS",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "google-map-react": "^2.1.9",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.17",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.5.0",
+    "nodemon": "^2.0.7",
+    "randomstring": "^1.1.5",
+    "simple-carousel-react-native": "^1.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
