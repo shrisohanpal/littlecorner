@@ -45,17 +45,24 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.use(express.static('public'));
 app.use('/api/uploads', express.static('uploads'))
 
-app.get('/', (req, res) => {
-    res.send('API is running....')
-})
+//app.get('/', (req, res) => {
+//    res.send('API is running....')
+//})
 
 if (process.env.NODE_ENV === 'production') {
+
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+    app.get('/', (req, res) =>
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    )
+    /*
     const frontapp = express()
     frontapp.use(express.static(path.join(__dirname, '/frontend/build')))
     frontapp.get('*', (req, res) =>
         res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
     )
-    frontapp.listen(3000)
+    frontapp.listen(3000) 
+    */
 }
 
 app.use(notFound)

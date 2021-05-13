@@ -45,15 +45,31 @@ const Header = () => {
                 <Button className='mx-3' onClick={() => { setDrawerOpen(true) }}>
                     <i className='fas fa-bars' />
                 </Button>
+                <LinkContainer to='/' className='py-0 my-0'>
+                    <Navbar.Brand>
+                        LC
+                    </Navbar.Brand>
+                </LinkContainer>
+
                 <NavDropdown title="Browse" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    {!loading && !error && (
+                        <>
+                            {categorys.map((category) => (
+                                <LinkContainer to={`/productsbycat/${category._id}`}>
+                                    <NavDropdown.Item key={category._id}>{category.name}</NavDropdown.Item>
+                                </LinkContainer>
+                            ))}
+                        </>
+                    )}
                 </NavDropdown>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: window.innerWidth > 768 ? '50%' : '55%' }} onChange={e => setKeyword(e.target.value)} />
-                <Button type='submit'>Search</Button>
+                {window.innerWidth > 768 &&
+                    (
+                        <><FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: window.innerWidth > 768 ? '60%' : '55%' }} onChange={e => setKeyword(e.target.value)} />
+                            <Button type='submit'>Search</Button>
+                        </>
+                    )
+                }
+
                 <div onClick={getUserLocation}>
                     <Nav.Link>
                         <i className='fas fa-map-marker-alt' style={{ fontSize: 30 }}></i>
@@ -72,21 +88,103 @@ const Header = () => {
     return (
         <header>
             <Container>
-                <Navbar expand="lg" className='py-0'>
-                    <Nav className="m-auto">
-                        <LinkContainer to='/' className='py-0 my-0'>
-                            <Navbar.Brand>
-                                <text style={{ fontSize: 30 }}>
-                                    Little Corner
-                                </text>
-                            </Navbar.Brand>
-                        </LinkContainer>
-                    </Nav>
-                </Navbar>
-                <Row className='py-3'>
+                <Row className='py-3 my-3'>
                     <Route render={({ history }) => <SearchBox history={history} />} />
                 </Row>
             </Container>
+            <Drawer anchor='left' open={drawerOpen} onClose={() => { setDrawerOpen(false) }}>
+                <List style={{ width: 250 }}>
+                    <ListItem>
+                        <ListItemText primary={<div style={{ fontWeight: 'bold', fontSize: 20 }}>Little Corner</div>} />
+                        <Button className='ml-auto' onClick={() => setDrawerOpen(false)}><i className='fas fa-times' /></Button>
+                    </ListItem>
+                    <Divider />
+                    <ListItem />
+                    {
+                        userInfo && userInfo.isAdmin && (
+                            <>
+                                <ListItem>
+                                    <ListItemText primary={<div style={{ fontWeight: 'bold', fontSize: 20 }}>Admin Options</div>} />
+                                </ListItem>
+                                <ListItem button>
+                                    <LinkContainer to='/admin/userlist'>
+                                        <ListItemText primary="Users List" />
+                                    </LinkContainer>
+                                </ListItem>
+                                <ListItem button>
+                                    <LinkContainer to='/admin/categorylist'>
+                                        <ListItemText primary="Categories" />
+                                    </LinkContainer>
+                                </ListItem>
+                                <ListItem button>
+                                    <LinkContainer to='/admin/productlist'>
+                                        <ListItemText primary="Products" />
+                                    </LinkContainer>
+                                </ListItem>
+                                <ListItem button>
+                                    <LinkContainer to='/admin/orderlist'>
+                                        <ListItemText primary="Orders" />
+                                    </LinkContainer>
+                                </ListItem>
+                                <Divider />
+                                <ListItem />
+                            </>
+                        )
+                    }
+
+                    {
+                        userInfo && userInfo.isVendor && (
+                            <>
+                                <ListItem>
+                                    <ListItemText primary={<div style={{ fontWeight: 'bold', fontSize: 20 }}>Vendor Options</div>} />
+                                </ListItem>
+                                <ListItem button>
+                                    <LinkContainer to='/vendor/productlist'>
+                                        <ListItemText primary="Products" />
+                                    </LinkContainer>
+                                </ListItem>
+                                <ListItem button>
+                                    <LinkContainer to='/vendor/orderlist'>
+                                        <ListItemText primary="Orders" />
+                                    </LinkContainer>
+                                </ListItem>
+                                <Divider />
+                                <ListItem />
+                            </>
+                        )
+                    }
+                    <ListItem button>
+                        <LinkContainer to={userInfo ? '/profile' : '/login'}>
+                            <ListItemText primary="LOGIN OR SIGN UP" />
+                        </LinkContainer>
+                    </ListItem>
+                    <ListItem button>
+                        <LinkContainer to='/fg'>
+                            <ListItemText primary="Track Order" />
+                        </LinkContainer>
+                    </ListItem>
+                    <ListItem button>
+                        <LinkContainer to='/fg'>
+                            <ListItemText primary="Exchange / Return Order" />
+                        </LinkContainer>
+                    </ListItem>
+                    <ListItem button>
+                        <LinkContainer to='/fg'>
+                            <ListItemText primary="Contact Us" />
+                        </LinkContainer>
+                    </ListItem>
+                    <ListItem button>
+                        <LinkContainer to='/fg'>
+                            <ListItemText primary="Sell on Little Corner" />
+                        </LinkContainer>
+                    </ListItem>
+                    <ListItem button>
+                        <LinkContainer to='/fg'>
+                            <ListItemText primary="Terms and Conditions" />
+                        </LinkContainer>
+                    </ListItem>
+                </List>
+            </Drawer>
         </header>
     )
 }
