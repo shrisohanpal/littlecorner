@@ -8,7 +8,6 @@ import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct, deleteProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
-import { baseUrl } from '../urls'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -83,7 +82,7 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axios.post(`${baseUrl}/api/upload`, formData, config)
+      const { data } = await axios.post(`/api/upload`, formData, config)
 
       setImage(data)
       setUploading(false)
@@ -106,7 +105,7 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axios.post(`${baseUrl}/api/upload`, formData, config)
+      const { data } = await axios.post(`/api/upload`, formData, config)
 
       setImage2(data)
       setUploading(false)
@@ -129,7 +128,7 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axios.post(`${baseUrl}/api/upload`, formData, config)
+      const { data } = await axios.post(`/api/upload`, formData, config)
 
       setImage3(data)
       setUploading(false)

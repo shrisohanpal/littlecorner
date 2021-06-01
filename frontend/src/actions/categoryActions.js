@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { baseUrl } from '../urls'
 import {
     CATEGORY_CREATE_FAIL,
     CATEGORY_CREATE_REQUEST,
@@ -24,7 +23,7 @@ export const listCategorys = () => async (dispatch) => {
         dispatch({ type: CATEGORY_LIST_REQUEST })
 
         const { data } = await axios.get(
-            `${baseUrl}/api/categorys`
+            `/api/categorys`
         )
         dispatch({
             type: CATEGORY_LIST_SUCCESS,
@@ -45,7 +44,7 @@ export const listCategoryDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: CATEGORY_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`${baseUrl}/api/categorys/${id}`)
+        const { data } = await axios.get(`/api/categorys/${id}`)
 
         dispatch({
             type: CATEGORY_DETAILS_SUCCESS,
@@ -78,7 +77,7 @@ export const deleteCategory = (id) => async (dispatch, getState) => {
             },
         }
 
-        await axios.delete(`${baseUrl}/api/categorys/${id}`, config)
+        await axios.delete(`/api/categorys/${id}`, config)
 
         dispatch({
             type: CATEGORY_DELETE_SUCCESS,
@@ -114,7 +113,7 @@ export const createCategory = () => async (dispatch, getState) => {
             },
         }
 
-        const { data } = await axios.post(`${baseUrl}/api/categorys`, {}, config)
+        const { data } = await axios.post(`/api/categorys`, {}, config)
 
         dispatch({
             type: CATEGORY_CREATE_SUCCESS,
@@ -155,7 +154,7 @@ export const updateCategory = (category) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `${baseUrl}/api/categorys/${category._id}`,
+            `/api/categorys/${category._id}`,
             category,
             config
         )

@@ -100,59 +100,6 @@ const Header = () => {
                     </ListItem>
                     <Divider />
                     <ListItem />
-                    {
-                        userInfo && userInfo.isAdmin && (
-                            <>
-                                <ListItem>
-                                    <ListItemText primary={<div style={{ fontWeight: 'bold', fontSize: 20 }}>Admin Options</div>} />
-                                </ListItem>
-                                <ListItem button>
-                                    <LinkContainer to='/admin/userlist'>
-                                        <ListItemText primary="Users List" />
-                                    </LinkContainer>
-                                </ListItem>
-                                <ListItem button>
-                                    <LinkContainer to='/admin/categorylist'>
-                                        <ListItemText primary="Categories" />
-                                    </LinkContainer>
-                                </ListItem>
-                                <ListItem button>
-                                    <LinkContainer to='/admin/productlist'>
-                                        <ListItemText primary="Products" />
-                                    </LinkContainer>
-                                </ListItem>
-                                <ListItem button>
-                                    <LinkContainer to='/admin/orderlist'>
-                                        <ListItemText primary="Orders" />
-                                    </LinkContainer>
-                                </ListItem>
-                                <Divider />
-                                <ListItem />
-                            </>
-                        )
-                    }
-
-                    {
-                        userInfo && userInfo.isVendor && (
-                            <>
-                                <ListItem>
-                                    <ListItemText primary={<div style={{ fontWeight: 'bold', fontSize: 20 }}>Vendor Options</div>} />
-                                </ListItem>
-                                <ListItem button>
-                                    <LinkContainer to='/vendor/productlist'>
-                                        <ListItemText primary="Products" />
-                                    </LinkContainer>
-                                </ListItem>
-                                <ListItem button>
-                                    <LinkContainer to='/vendor/orderlist'>
-                                        <ListItemText primary="Orders" />
-                                    </LinkContainer>
-                                </ListItem>
-                                <Divider />
-                                <ListItem />
-                            </>
-                        )
-                    }
                     <ListItem button>
                         <LinkContainer to={userInfo ? '/profile' : '/login'}>
                             <ListItemText primary="LOGIN OR SIGN UP" />
@@ -181,6 +128,11 @@ const Header = () => {
                     <ListItem button>
                         <LinkContainer to='/fg'>
                             <ListItemText primary="Terms and Conditions" />
+                        </LinkContainer>
+                    </ListItem>
+                    <ListItem button>
+                        <LinkContainer to='/dashboard'>
+                            <ListItemText primary="Go to Dashboard" />
                         </LinkContainer>
                     </ListItem>
                 </List>

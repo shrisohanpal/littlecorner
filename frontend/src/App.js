@@ -12,19 +12,22 @@ import UserEditScreen from './screens/UserEditScreen'
 import CategoryListScreen from './screens/CategoryListScreen'
 import CategoryEditScreen from './screens/CategoryEditScreen'
 import StoreScreen from './screens/StoreScreen'
-import ShopListScreen from './screens/ShopListScreen'
-import ShopScreen from './screens/ShopScreen'
-import ShopEditScreen from './screens/ShopEditScreen'
 import ProductScreen from './screens/ProductScreen'
 import ProductsScreen from './screens/ProductsScreen'
 import ProductsByCatScreen from './screens/ProductsByCatScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
+
+import BlogScreen from './screens/BlogScreen'
+import BlogListScreen from './screens/BlogListScreen'
+import BlogEditScreen from './screens/BlogEditScreen'
+
 import CartScreen from './screens/CartScreen'
 import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
 
+import DashboardScreen from './screens/DashboardScreen'
 // import Cate from './screens/Categ'
 // import ShopListScreen from './screens/ShopList'
 
@@ -32,15 +35,13 @@ import ProductListScreen from './screens/ProductListScreen'
 import OrderListScreen from './screens/OrderListScreen'
 
 import VendorsProductListScreen from './screens/VendorsProductListScreen'
-import VendorsShopScreen from './screens/VendorsShopScreen'
 import VendorsOrderListScreen from './screens/VendorsOrderListScreen'
 
 import PrivacypolicyScreen from './screens/PrivacypolicyScreen'
 import ReturnPolicyScreen from './screens/ReturnPolicyScreen'
 import TermsAndConditions from './screens/TermsAndConditions'
 
-const App = () =>
-{
+const App = () => {
   return (
     <Router>
       <Header />
@@ -54,7 +55,6 @@ const App = () =>
         <Route path='/forgotpassword' component={ForgotPassword} />
 
         <Route path='/store' component={StoreScreen} />
-        <Route path='/shopscreen/:id' component={ShopScreen} />
         <Route path='/product/:id' component={ProductScreen} />
         <Route path='/search/:keyword' component={ProductsScreen} exact />
         <Route path='/productsbycat/:id' component={ProductsByCatScreen} />
@@ -64,18 +64,21 @@ const App = () =>
         <Route path='/placeorder' component={PlaceOrderScreen} />
         <Route path='/order/:id' component={OrderScreen} />
 
+        <Route path='/dashboard' component={DashboardScreen} />
+
         <Route path='/admin/userlist' component={UserListScreen} />
         <Route path='/admin/user/:id/edit' component={UserEditScreen} />
         <Route path='/admin/categorylist' component={CategoryListScreen} />
         <Route path='/admin/category/:id/edit' component={CategoryEditScreen} />
-        <Route path='/admin/shoplist' component={ShopListScreen} />
-        <Route path='/admin/shop/:id/edit' component={ShopEditScreen} />
         <Route path='/admin/productlist' component={ProductListScreen} />
         <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
+        <Route path='/admin/bloglist' component={BlogListScreen} />
+        <Route path='/admin/blog/:id/edit' component={BlogEditScreen} />
         <Route path='/admin/orderlist' component={OrderListScreen} />
+
         <Route path='/vendor/productlist' component={VendorsProductListScreen} />
-        <Route path='/vendor/shoplist' component={VendorsShopScreen} />
         <Route path='/vendor/orderlist' component={VendorsOrderListScreen} />
+        <Route path='/blogger/bloglist' component={BlogListScreen} />
 
         <Route path='/privacypolicy' component={PrivacypolicyScreen} />
         <Route path='/returnpolicy' component={ReturnPolicyScreen} />

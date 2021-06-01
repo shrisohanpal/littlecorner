@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import { listUsers, deleteUser } from '../actions/userActions'
 
-const UserListScreen = ({ history }) =>
-{
+const UserListScreen = ({ history }) => {
   const dispatch = useDispatch()
 
   const userList = useSelector((state) => state.userList)
@@ -19,8 +18,7 @@ const UserListScreen = ({ history }) =>
   const userDelete = useSelector((state) => state.userDelete)
   const { success: successDelete } = userDelete
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers())
     } else {
@@ -28,8 +26,7 @@ const UserListScreen = ({ history }) =>
     }
   }, [dispatch, history, successDelete, userInfo])
 
-  const deleteHandler = (id) =>
-  {
+  const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
       dispatch(deleteUser(id))
     }
@@ -49,6 +46,7 @@ const UserListScreen = ({ history }) =>
               <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
+              <th>BLOGGER</th>
               <th>VENDOR</th>
               <th>ADMIN</th>
               <th></th>
@@ -61,6 +59,13 @@ const UserListScreen = ({ history }) =>
                 <td>{user.name}</td>
                 <td>
                   <a href={`mailto:${user.email}`}>{user.email}</a>
+                </td>
+                <td>
+                  {user.isBlogger ? (
+                    <i className='fas fa-check' style={{ color: 'green' }}></i>
+                  ) : (
+                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                  )}
                 </td>
                 <td>
                   {user.isVendor ? (

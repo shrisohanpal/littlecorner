@@ -1,55 +1,55 @@
 import axios from 'axios'
 import {
-  PRODUCT_LIST_REQUEST,
-  PRODUCT_LIST_SUCCESS,
-  PRODUCT_LIST_FAIL,
-  PRODUCT_LIST_BY_SHOP_REQUEST,
-  PRODUCT_LIST_BY_SHOP_SUCCESS,
-  PRODUCT_LIST_BY_SHOP_FAIL,
-  PRODUCT_LIST_BY_VENDOR_REQUEST,
-  PRODUCT_LIST_BY_VENDOR_SUCCESS,
-  PRODUCT_LIST_BY_VENDOR_FAIL,
-  PRODUCT_LIST_BY_CATEGORY_REQUEST,
-  PRODUCT_LIST_BY_CATEGORY_SUCCESS,
-  PRODUCT_LIST_BY_CATEGORY_FAIL,
-  PRODUCT_DETAILS_REQUEST,
-  PRODUCT_DETAILS_SUCCESS,
-  PRODUCT_DETAILS_FAIL,
-  PRODUCT_DELETE_SUCCESS,
-  PRODUCT_DELETE_REQUEST,
-  PRODUCT_DELETE_FAIL,
-  PRODUCT_CREATE_REQUEST,
-  PRODUCT_CREATE_SUCCESS,
-  PRODUCT_CREATE_FAIL,
-  PRODUCT_UPDATE_REQUEST,
-  PRODUCT_UPDATE_SUCCESS,
-  PRODUCT_UPDATE_FAIL,
-  PRODUCT_CREATE_REVIEW_REQUEST,
-  PRODUCT_CREATE_REVIEW_SUCCESS,
-  PRODUCT_CREATE_REVIEW_FAIL,
-  PRODUCT_TOP_REQUEST,
-  PRODUCT_TOP_SUCCESS,
-  PRODUCT_TOP_FAIL,
-} from '../constants/productConstants'
+  BLOG_LIST_REQUEST,
+  BLOG_LIST_SUCCESS,
+  BLOG_LIST_FAIL,
+  BLOG_LIST_BY_SHOP_REQUEST,
+  BLOG_LIST_BY_SHOP_SUCCESS,
+  BLOG_LIST_BY_SHOP_FAIL,
+  BLOG_LIST_BY_VENDOR_REQUEST,
+  BLOG_LIST_BY_VENDOR_SUCCESS,
+  BLOG_LIST_BY_VENDOR_FAIL,
+  BLOG_LIST_BY_CATEGORY_REQUEST,
+  BLOG_LIST_BY_CATEGORY_SUCCESS,
+  BLOG_LIST_BY_CATEGORY_FAIL,
+  BLOG_DETAILS_REQUEST,
+  BLOG_DETAILS_SUCCESS,
+  BLOG_DETAILS_FAIL,
+  BLOG_DELETE_SUCCESS,
+  BLOG_DELETE_REQUEST,
+  BLOG_DELETE_FAIL,
+  BLOG_CREATE_REQUEST,
+  BLOG_CREATE_SUCCESS,
+  BLOG_CREATE_FAIL,
+  BLOG_UPDATE_REQUEST,
+  BLOG_UPDATE_SUCCESS,
+  BLOG_UPDATE_FAIL,
+  BLOG_CREATE_REVIEW_REQUEST,
+  BLOG_CREATE_REVIEW_SUCCESS,
+  BLOG_CREATE_REVIEW_FAIL,
+  BLOG_TOP_REQUEST,
+  BLOG_TOP_SUCCESS,
+  BLOG_TOP_FAIL,
+} from '../constants/blogConstants'
 import { logout } from './userActions'
 
-export const listProducts = (keyword = '', pageNumber = '') => async (
+export const listBlogs = (keyword = '', pageNumber = '') => async (
   dispatch
 ) => {
   try {
-    dispatch({ type: PRODUCT_LIST_REQUEST })
+    dispatch({ type: BLOG_LIST_REQUEST })
 
     const { data } = await axios.get(
-      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `/api/blogs?keyword=${keyword}&pageNumber=${pageNumber}`
     )
 
     dispatch({
-      type: PRODUCT_LIST_SUCCESS,
+      type: BLOG_LIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_LIST_FAIL,
+      type: BLOG_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -58,23 +58,23 @@ export const listProducts = (keyword = '', pageNumber = '') => async (
   }
 }
 
-export const listProductsByShop = (shopId) => async (
+export const listBlogsByShop = (shopId) => async (
   dispatch
 ) => {
   try {
-    dispatch({ type: PRODUCT_LIST_BY_SHOP_REQUEST })
+    dispatch({ type: BLOG_LIST_BY_SHOP_REQUEST })
 
     const { data } = await axios.get(
-      `/api/products/byshop?shopId=${shopId}`
+      `/api/blogs/byshop?shopId=${shopId}`
     )
 
     dispatch({
-      type: PRODUCT_LIST_BY_SHOP_SUCCESS,
+      type: BLOG_LIST_BY_SHOP_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_LIST_BY_SHOP_FAIL,
+      type: BLOG_LIST_BY_SHOP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -83,23 +83,23 @@ export const listProductsByShop = (shopId) => async (
   }
 }
 
-export const listProductsByVendor = (vendorId) => async (
+export const listBlogsByVendor = (vendorId) => async (
   dispatch
 ) => {
   try {
-    dispatch({ type: PRODUCT_LIST_BY_VENDOR_REQUEST })
+    dispatch({ type: BLOG_LIST_BY_VENDOR_REQUEST })
 
     const { data } = await axios.get(
-      `/api/products/byvendor?vendorId=${vendorId}`
+      `/api/blogs/byvendor?vendorId=${vendorId}`
     )
 
     dispatch({
-      type: PRODUCT_LIST_BY_VENDOR_SUCCESS,
+      type: BLOG_LIST_BY_VENDOR_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_LIST_BY_VENDOR_FAIL,
+      type: BLOG_LIST_BY_VENDOR_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -108,23 +108,23 @@ export const listProductsByVendor = (vendorId) => async (
   }
 }
 
-export const listProductsByCat = (catId) => async (
+export const listBlogsByCat = (catId) => async (
   dispatch
 ) => {
   try {
-    dispatch({ type: PRODUCT_LIST_BY_CATEGORY_REQUEST })
+    dispatch({ type: BLOG_LIST_BY_CATEGORY_REQUEST })
 
     const { data } = await axios.get(
-      `/api/products/bycat?catId=${catId}`
+      `/api/blogs/bycat?catId=${catId}`
     )
 
     dispatch({
-      type: PRODUCT_LIST_BY_CATEGORY_SUCCESS,
+      type: BLOG_LIST_BY_CATEGORY_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_LIST_BY_CATEGORY_FAIL,
+      type: BLOG_LIST_BY_CATEGORY_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -133,19 +133,19 @@ export const listProductsByCat = (catId) => async (
   }
 }
 
-export const listProductDetails = (id) => async (dispatch) => {
+export const listBlogDetails = (id) => async (dispatch) => {
   try {
-    dispatch({ type: PRODUCT_DETAILS_REQUEST })
+    dispatch({ type: BLOG_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await axios.get(`/api/blogs/${id}`)
 
     dispatch({
-      type: PRODUCT_DETAILS_SUCCESS,
+      type: BLOG_DETAILS_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_DETAILS_FAIL,
+      type: BLOG_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -154,10 +154,10 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 }
 
-export const deleteProduct = (id) => async (dispatch, getState) => {
+export const deleteBlog = (id) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: PRODUCT_DELETE_REQUEST,
+      type: BLOG_DELETE_REQUEST,
     })
 
     const {
@@ -170,10 +170,10 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`/api/products/${id}`, config)
+    await axios.delete(`/api/blogs/${id}`, config)
 
     dispatch({
-      type: PRODUCT_DELETE_SUCCESS,
+      type: BLOG_DELETE_SUCCESS,
     })
   } catch (error) {
     const message =
@@ -184,16 +184,16 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: PRODUCT_DELETE_FAIL,
+      type: BLOG_DELETE_FAIL,
       payload: message,
     })
   }
 }
 
-export const createProduct = () => async (dispatch, getState) => {
+export const createBlog = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: PRODUCT_CREATE_REQUEST,
+      type: BLOG_CREATE_REQUEST,
     })
 
     const {
@@ -206,10 +206,10 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`/api/products`, {}, config)
+    const { data } = await axios.post(`/api/blogs`, {}, config)
 
     dispatch({
-      type: PRODUCT_CREATE_SUCCESS,
+      type: BLOG_CREATE_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -221,16 +221,16 @@ export const createProduct = () => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: PRODUCT_CREATE_FAIL,
+      type: BLOG_CREATE_FAIL,
       payload: message,
     })
   }
 }
 
-export const updateProduct = (product) => async (dispatch, getState) => {
+export const updateBlog = (blog) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: PRODUCT_UPDATE_REQUEST,
+      type: BLOG_UPDATE_REQUEST,
     })
 
     const {
@@ -245,16 +245,16 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `/api/products/${product._id}`,
-      product,
+      `/api/blogs/${blog._id}`,
+      blog,
       config
     )
 
     dispatch({
-      type: PRODUCT_UPDATE_SUCCESS,
+      type: BLOG_UPDATE_SUCCESS,
       payload: data,
     })
-    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
+    dispatch({ type: BLOG_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -264,19 +264,19 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: PRODUCT_UPDATE_FAIL,
+      type: BLOG_UPDATE_FAIL,
       payload: message,
     })
   }
 }
 
-export const createProductReview = (productId, review) => async (
+export const createBlogReview = (blogId, review) => async (
   dispatch,
   getState
 ) => {
   try {
     dispatch({
-      type: PRODUCT_CREATE_REVIEW_REQUEST,
+      type: BLOG_CREATE_REVIEW_REQUEST,
     })
 
     const {
@@ -290,10 +290,10 @@ export const createProductReview = (productId, review) => async (
       },
     }
 
-    await axios.post(`/api/products/${productId}/reviews`, review, config)
+    await axios.post(`/api/blogs/${blogId}/reviews`, review, config)
 
     dispatch({
-      type: PRODUCT_CREATE_REVIEW_SUCCESS,
+      type: BLOG_CREATE_REVIEW_SUCCESS,
     })
   } catch (error) {
     const message =
@@ -304,25 +304,25 @@ export const createProductReview = (productId, review) => async (
       dispatch(logout())
     }
     dispatch({
-      type: PRODUCT_CREATE_REVIEW_FAIL,
+      type: BLOG_CREATE_REVIEW_FAIL,
       payload: message,
     })
   }
 }
 
-export const listTopProducts = () => async (dispatch) => {
+export const listTopBlogs = () => async (dispatch) => {
   try {
-    dispatch({ type: PRODUCT_TOP_REQUEST })
+    dispatch({ type: BLOG_TOP_REQUEST })
 
-    const { data } = await axios.get(`/api/products/top`)
+    const { data } = await axios.get(`/api/blogs/top`)
 
     dispatch({
-      type: PRODUCT_TOP_SUCCESS,
+      type: BLOG_TOP_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_TOP_FAIL,
+      type: BLOG_TOP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

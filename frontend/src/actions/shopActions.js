@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { baseUrl } from '../urls'
 
 import {
     SHOP_LIST_REQUEST,
@@ -28,7 +27,7 @@ export const listShops = async (dispatch) => {
         dispatch({ type: SHOP_LIST_REQUEST })
 
         const { data } = await axios.get(
-            `${baseUrl}/api/shops`
+            `/api/shops`
         )
 
         dispatch({
@@ -62,7 +61,7 @@ export const getShopByVendor = (id) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.get(
-            `${baseUrl}/api/shops/vendor/${id}`, config
+            `/api/shops/vendor/${id}`, config
         )
 
         dispatch({
@@ -84,7 +83,7 @@ export const listShopDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: SHOP_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`${baseUrl}/api/shops/${id}`)
+        const { data } = await axios.get(`/api/shops/${id}`)
 
         dispatch({
             type: SHOP_DETAILS_SUCCESS,
@@ -117,7 +116,7 @@ export const deleteShop = (id) => async (dispatch, getState) => {
             },
         }
 
-        await axios.delete(`${baseUrl}/api/shops/${id}`, config)
+        await axios.delete(`/api/shops/${id}`, config)
 
         dispatch({
             type: SHOP_DELETE_SUCCESS,
@@ -153,7 +152,7 @@ export const createShop = () => async (dispatch, getState) => {
             },
         }
 
-        const { data } = await axios.post(`${baseUrl}/api/shops`, {}, config)
+        const { data } = await axios.post(`/api/shops`, {}, config)
 
         dispatch({
             type: SHOP_CREATE_SUCCESS,
@@ -192,7 +191,7 @@ export const updateShop = (shop) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `${baseUrl}/api/shops/${shop._id}`,
+            `/api/shops/${shop._id}`,
             shop,
             config
         )

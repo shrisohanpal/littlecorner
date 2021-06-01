@@ -1,0 +1,17 @@
+        WORK DONE ON LITTLE CORNER
+
+    1. User CRUD Operation Done.        
+    2. Categories CRUD Operation Done.
+    3. Products CRUD Operation Done.    // Home Screen Pr Show karne hai abhi
+    4. Blogs CRUD Operation Done.X      // Home Screen Pr Show karne hai abhi
+    5. Orders CRUD Operation Done.X
+    6. Admin Dashboard & all functionalities Done.
+    7. Blogger DashBoard & all functionalities Done.  X
+    8. Vendor Dashboard & all functionalities Done.
+
+
+        REMAINING
+    1. Payment Recived: 0%
+    2. Payment Remaiing: 100%
+
+    4, 5, 7

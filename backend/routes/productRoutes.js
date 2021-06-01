@@ -1,9 +1,8 @@
 import express from 'express'
 const router = express.Router()
-import
-{
+import {
   getProducts,
-  getProductsByShop,
+  //getProductsByShop,
   getProductsByVendor,
   getProductsByCat,
   getProductById,
@@ -15,7 +14,7 @@ import
 import { protect, adminOrVendor } from '../middleware/authMiddleware.js'
 
 router.route('/').get(getProducts).post(protect, adminOrVendor, createProduct)
-router.route('/byshop').get(getProductsByShop)
+//router.route('/byshop').get(getProductsByShop)
 router.route('/byvendor').get(getProductsByVendor)
 router.route('/bycat').get(getProductsByCat)
 router.route('/:id/reviews').post(protect, createProductReview)

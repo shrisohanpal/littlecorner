@@ -5,12 +5,12 @@ import colors from 'colors'
 
 import users from './data/users.js'
 import categorys from './data/categorys.js'
-import shops from './data/shops.js'
+import blogs from './data/blogs.js'
 import products from './data/products.js'
 
 import User from './models/userModel.js'
 import Category from './models/categoryModel.js'
-import Shop from './models/shopModel.js'
+import Blog from './models/blogModel.js'
 import Product from './models/productModel.js'
 import Order from './models/orderModel.js'
 
@@ -19,12 +19,11 @@ dotenv.config()
 
 connectDB()
 
-const importData = async () =>
-{
+const importData = async () => {
     try {
         await Order.deleteMany()
         await Product.deleteMany()
-        await Shop.deleteMany()
+        await Blog.deleteMany()
         await Category.deleteMany()
         await User.deleteMany()
 
@@ -33,24 +32,21 @@ const importData = async () =>
         const adminUser = createdUsers[0]._id
         const vendorUser = createdUsers[1]._id
 
-        const sampleCategorys = categorys.map((category) =>
-        {
+        const sampleCategorys = categorys.map((category) => {
             return { ...category, user: adminUser }
         })
 
         const createdCategorys = await Category.insertMany(sampleCategorys)
         const cat1 = createdCategorys[0]._id
 
-        const sampleShops = shops.map((shop) =>
-        {
-            return { ...shop, user: adminUser, category: cat1 }
+        const sampleBlogs = blogs.map((blog) => {
+            return { ...blog, user: adminUser }
         })
 
-        const createdShops = await Shop.insertMany(sampleShops)
+        await Blog.insertMany(sampleBlogs)
 
-        const sampleProducts = products.map((product) =>
-        {
-            return { ...product, user: vendorUser, category: cat1, shop: createdShops[0] }
+        const sampleProducts = products.map((product) => {
+            return { ...product, user: vendorUser, category: cat1 }
         })
 
         await Product.insertMany(sampleProducts)
@@ -63,8 +59,7 @@ const importData = async () =>
     }
 }
 
-const destroyData = async () =>
-{
+const destroyData = async () => {
     try {
         await Order.deleteMany()
         await Product.deleteMany()

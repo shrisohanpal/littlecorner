@@ -5,7 +5,6 @@ import { Container, Row, Col, Image, ListGroup, Card, Button, Carousel, Form } f
 import { CircularProgress } from '@material-ui/core'
 import { listProductDetails } from '../actions/productActions'
 import Message from '../components/Message'
-import { baseUrl } from '../urls'
 
 const ProductScreen = ({ history, match }) => {
     const [qty, setQty] = useState(1)
@@ -40,7 +39,7 @@ const ProductScreen = ({ history, match }) => {
                                             <Carousel.Item key={k}>
                                                 <div style={{ height: 400 }}>
                                                     <Image style={{ display: 'block', width: '100%', height: '100%', borderRadius: '1%', margin: '0%' }}
-                                                        src={`${baseUrl}/api${x}`}
+                                                        src={`/api${x}`}
                                                         alt={product.name} fluid />
                                                 </div>
                                             </Carousel.Item>

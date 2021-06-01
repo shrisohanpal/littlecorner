@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
-import Shop from '../models/shopModel.js'
+//import Shop from '../models/shopModel.js'
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -36,11 +36,11 @@ const getProducts = asyncHandler(async (req, res) => {
 // @desc    Fetch all products of a shop
 // @route   GET /api/products/byshop
 // @access  Public
-const getProductsByShop = asyncHandler(async (req, res) => {
+/*const getProductsByShop = asyncHandler(async (req, res) => {
   const shopId = req.query.shopId
   const products = await Product.find({ shop: shopId })
   res.json({ products })
-})
+})*/
 
 // @desc    Fetch all products of a vendor
 // @route   GET /api/products/byvendor
@@ -96,7 +96,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     user: req.user._id,
-    shop: await Shop.findOne({ user: req.user._id }),
+    // shop: await Shop.findOne({ user: req.user._id }),
     image: ['/uploads\\sample.jpg', '/uploads\\sample.jpg', '/uploads\\sample.jpg'],
   })
 
@@ -126,7 +126,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
 
   if (product) {
-    product.shop = await Shop.findOne({ user: req.user._id })
+    // product.shop = await Shop.findOne({ user: req.user._id })
     product.name = name
     product.category = category
     product.description = description
@@ -199,7 +199,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 
 export {
   getProducts,
-  getProductsByShop,
+  //  getProductsByShop,
   getProductsByVendor,
   getProductsByCat,
   getProductById,

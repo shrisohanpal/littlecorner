@@ -19,6 +19,7 @@ const authUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isVendor: user.isVendor,
+      isBlogger: user.isBlogger,
       token: generateToken(user._id),
     })
   } else {
@@ -98,6 +99,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      isBlogger: updatedUser.isBlogger,
       isVendor: updatedUser.isVendor,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
@@ -197,6 +199,7 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
+    user.isBlogger = req.body.isBlogger
     user.isVendor = req.body.isVendor
     user.isAdmin = req.body.isAdmin
 
@@ -206,6 +209,7 @@ const updateUser = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      isBlogger: updatedUser.isBlogger,
       isVendor: updatedUser.isVendor,
       isAdmin: updatedUser.isAdmin,
     })

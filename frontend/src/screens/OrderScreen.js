@@ -14,7 +14,6 @@ import {
     ORDER_PAY_RESET,
     ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
-import { baseUrl } from '../urls'
 
 const OrderScreen = ({ match, history }) => {
     const orderId = match.params.id
@@ -137,7 +136,7 @@ const OrderScreen = ({ match, history }) => {
                                                     <Row>
                                                         <Col md={1}>
                                                             <Image
-                                                                src={`${baseUrl}/api${item.images[0]}`}
+                                                                src={`/api${item.images[0]}`}
                                                                 alt={item.name}
                                                                 fluid
                                                                 rounded

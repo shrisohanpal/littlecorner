@@ -26,19 +26,22 @@ const userSchema = mongoose.Schema(
             required: true,
             default: false,
         },
+        isBlogger: {
+            type: Boolean,
+            required: true,
+            default: false
+        }
     },
     {
         timestamps: true,
     }
 )
 
-userSchema.methods.matchPassword = async function (enteredPassword)
-{
+userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
-userSchema.pre('save', async function (next)
-{
+userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         next()
     }
