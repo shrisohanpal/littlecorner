@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Carousel, Image, Container, Card, Button } from 'react-bootstrap'
 import { CircularProgress } from '@material-ui/core'
 import Product from '../components/Product'
-import Shop from '../components/Shop'
+import Blog from '../components/Blog'
 import Message from '../components/Message'
 import { listProducts } from '../actions/productActions'
-import { listShops } from '../actions/shopActions'
+import { listBlogs } from '../actions/blogActions'
 import OwlCarousel from 'react-owl-carousel';
 
 const HomeScreen = () => {
@@ -15,12 +15,12 @@ const HomeScreen = () => {
     const productList = useSelector(state => state.productList)
     const { loading: loadingProducts, error: errorProducts, products } = productList
 
-    const shopList = useSelector(state => state.shopList)
-    const { loading: loadingShops, error: errorShops, shops } = shopList
+    const blogList = useSelector(state => state.blogList)
+    const { loading: loadingBlogs, error: errorBlogs, blogs } = blogList
 
     useEffect(() => {
         dispatch(listProducts())
-        dispatch(listShops)
+        dispatch(listBlogs())
     }, [dispatch])
 
     return (
@@ -168,6 +168,28 @@ const HomeScreen = () => {
                 </Col>
             </Row>
 
+
+            <h3 className='my-2'>Featured Products</h3>
+            {loadingProducts ? (<CircularProgress />)
+                : errorProducts
+                    ? (<Message variant='danger'>{errorProducts}</Message>)
+                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                        className="owl-theme"
+                        loop
+                        nav
+                        margin={8} autoplay={true} autoplayTimeout={2000}>
+                        {products.map((product) => (
+                            <div key={product._id}>
+                                <Product product={product} />
+                            </div>
+
+                        ))}
+                    </OwlCarousel>
+                    )
+            }
+
+
+
             <h2 className="py-3 my-3">Little Corner Shopper Favourites</h2>
 
             <Row>
@@ -204,6 +226,27 @@ const HomeScreen = () => {
                     </div>
                 </Col>
             </Row>
+
+
+            <h3 className='my-2'>Featured Blogs</h3>
+            {loadingBlogs ? (<CircularProgress />)
+                : errorBlogs
+                    ? (<Message variant='danger'>{errorBlogs}</Message>)
+                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                        className="owl-theme"
+                        loop
+                        nav
+                        margin={8} autoplay={true} autoplayTimeout={2000}>
+                        {blogs.map((blog) => (
+                            <div key={blog._id}>
+                                <Blog blog={blog} />
+                            </div>
+
+                        ))}
+                    </OwlCarousel>
+                    )
+            }
+
 
         </Container>
     )

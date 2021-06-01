@@ -1,23 +1,19 @@
 import express from 'express'
 const router = express.Router()
 import {
-getBlogs,
-getBlogsByShop,
-getBlogsByVendor,
-getBlogsByCat,
-getBlogById,
-deleteBlog,
-createBlog,
-updateBlog,
-createBlogReview,
+    getBlogs,
+    getBlogsByBlogger,
+    getBlogById,
+    deleteBlog,
+    createBlog,
+    updateBlog,
+    createBlogReview,
 } from '../controllers/blogController.js'
-import { protect, adminOrVendor } from '../middleware/authMiddleware.js'
+import { protect, adminOrBlogger } from '../middleware/authMiddleware.js'
 
-router.route('/').get(getBlogs).post(protect, adminOrVendor, createBlog)
-router.route('/byshop').get(getBlogsByShop)
-router.route('/byvendor').get(getBlogsByVendor)
-router.route('/bycat').get(getBlogsByCat)
+router.route('/').get(getBlogs).post(protect, adminOrBlogger, createBlog)
+router.route('/byblogger').get(getBlogsByBlogger)
 router.route('/:id/reviews').post(protect, createBlogReview)
-router.route('/:id').get(getBlogById).delete(protect, adminOrVendor, deleteBlog).put(protect, adminOrVendor, updateBlog)
+router.route('/:id').get(getBlogById).delete(protect, adminOrBlogger, deleteBlog).put(protect, adminOrBlogger, updateBlog)
 
 export default router

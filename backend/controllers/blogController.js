@@ -28,37 +28,20 @@ const getBlogs = asyncHandler(async (req, res) => {
 
   const count = await Blog.countDocuments({ ...keyword })
   const blogs = await Blog.find({ $or: [keyword, keyword2] }).sort({ updatedAt: -1 })
-
+  //console.log(blogs)
   res.json({ blogs, page, pages: Math.ceil(count / pageSize) })
 })
 
-// @desc    Fetch all blogs of a shop
-// @route   GET /api/blogs/byshop
-// @access  Public
-const getBlogsByShop = asyncHandler(async (req, res) => {
-  const shopId = req.query.shopId
-  const blogs = await Blog.find({ shop: shopId })
-  res.json({ blogs })
-})
 
-// @desc    Fetch all blogs of a vendor
-// @route   GET /api/blogs/byvendor
+
+// @desc    Fetch all blogs of a blogger
+// @route   GET /api/blogs/byblogger
 // @access  Public
-const getBlogsByVendor = asyncHandler(async (req, res) => {
-  const userId = req.query.vendorId
+const getBlogsByBlogger = asyncHandler(async (req, res) => {
+  const userId = req.query.bloggerId
   const blogs = await Blog.find({ user: userId })
   res.json({ blogs })
 })
-
-// @desc    Fetch all blogs of a category
-// @route   GET /api/blogs/bycat
-// @access  Public
-const getBlogsByCat = asyncHandler(async (req, res) => {
-  const catId = req.query.catId
-  const blogs = await Blog.find({ category: catId })
-  res.json({ blogs })
-})
-
 
 // @desc    Fetch single blog
 // @route   GET /api/blogs/:id
@@ -95,8 +78,8 @@ const deleteBlog = asyncHandler(async (req, res) => {
 const createBlog = asyncHandler(async (req, res) => {
   const blog = new Blog({
     user: req.user._id,
-    // shop: await Shop.findOne({ user: req.user._id }),
-    image: ['/uploads\\sample.jpg', '/uploads\\sample.jpg', '/uploads\\sample.jpg'],
+    // blog: await Shop.findOne({ user: req.user._id }),
+    image: '/uploads\\sample.jpg',
   })
 
   const createdBlog = await blog.save()
@@ -108,36 +91,17 @@ const createBlog = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const updateBlog = asyncHandler(async (req, res) => {
   const {
-    name,
-    category,
+    title,
     description,
-    images,
-    brand,
-    price,
-    gst,
-    finalPrice,
-    countInStock,
-    returnable,
-    refundable,
-    exchange
+    image
   } = req.body
 
   const blog = await Blog.findById(req.params.id)
 
   if (blog) {
-    blog.shop = await Shop.findOne({ user: req.user._id })
-    blog.name = name
-    blog.category = category
+    blog.title = title
     blog.description = description
-    blog.images = images
-    blog.brand = brand
-    blog.price = price
-    blog.gst = gst
-    blog.finalPrice = finalPrice
-    blog.countInStock = countInStock
-    blog.returnable = returnable
-    blog.refundable = refundable
-    blog.exchange = exchange
+    blog.image = image
     const updatedBlog = await blog.save()
     res.json(updatedBlog)
   } else {
@@ -198,9 +162,7 @@ const getTopBlogs = asyncHandler(async (req, res) => {
 
 export {
   getBlogs,
-  getBlogsByShop,
-  getBlogsByVendor,
-  getBlogsByCat,
+  getBlogsByBlogger,
   getBlogById,
   deleteBlog,
   createBlog,

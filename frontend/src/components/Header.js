@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, Form, Button, FormControl, Row, Col, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Container, Form, Button, FormControl, Row, Image, NavDropdown } from 'react-bootstrap'
 import { Divider, Drawer, List, ListItem, ListItemText } from '@material-ui/core';
 
 import { listCategorys } from '../actions/categoryActions'
@@ -47,7 +47,8 @@ const Header = () => {
                 </Button>
                 <LinkContainer to='/' className='py-0 my-0'>
                     <Navbar.Brand>
-                        LC
+                        <Image src='/logo.jpeg' style={{ width: 40, height: 40, borderRadius: 5, margin: 5 }} />
+                        MLC
                     </Navbar.Brand>
                 </LinkContainer>
 
@@ -64,7 +65,7 @@ const Header = () => {
                 </NavDropdown>
                 {window.innerWidth > 768 &&
                     (
-                        <><FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: window.innerWidth > 768 ? '60%' : '55%' }} onChange={e => setKeyword(e.target.value)} />
+                        <><FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: window.innerWidth > 768 ? '55%' : '55%' }} onChange={e => setKeyword(e.target.value)} />
                             <Button type='submit'>Search</Button>
                         </>
                     )

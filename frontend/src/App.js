@@ -36,6 +36,7 @@ import OrderListScreen from './screens/OrderListScreen'
 
 import VendorsProductListScreen from './screens/VendorsProductListScreen'
 import VendorsOrderListScreen from './screens/VendorsOrderListScreen'
+import BloggerBlogListScreen from './screens/BloggerBlogListScreen'
 
 import PrivacypolicyScreen from './screens/PrivacypolicyScreen'
 import ReturnPolicyScreen from './screens/ReturnPolicyScreen'
@@ -78,7 +79,7 @@ const App = () => {
 
         <Route path='/vendor/productlist' component={VendorsProductListScreen} />
         <Route path='/vendor/orderlist' component={VendorsOrderListScreen} />
-        <Route path='/blogger/bloglist' component={BlogListScreen} />
+        <Route path='/blogger/bloglist' component={BloggerBlogListScreen} />
 
         <Route path='/privacypolicy' component={PrivacypolicyScreen} />
         <Route path='/returnpolicy' component={ReturnPolicyScreen} />

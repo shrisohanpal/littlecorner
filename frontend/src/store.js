@@ -1,8 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import
-{
+import {
     userLoginReducer,
     userRegisterReducer,
     userDetailsReducer,
@@ -12,25 +11,14 @@ import
     userDeleteReducer,
     userUpdateReducer,
 } from './reducers/userReducers'
-import
-{
+import {
     categoryListReducer,
     categoryDetailsReducer,
     categoryDeleteReducer,
     categoryCreateReducer,
     categoryUpdateReducer
 } from './reducers/categoryReducers'
-import
-{
-    shopListReducer,
-    shopByVendorReducer,
-    shopDetailsReducer,
-    shopDeleteReducer,
-    shopCreateReducer,
-    shopUpdateReducer,
-} from './reducers/shopReducers'
-import
-{
+import {
     productListReducer,
     productListByShopReducer,
     productListByVendorReducer,
@@ -42,9 +30,22 @@ import
     productReviewCreateReducer,
     productTopRatedReducer,
 } from './reducers/productReducers'
+
+import {
+    blogListReducer,
+    blogListByShopReducer,
+    blogListByVendorReducer,
+    blogListByCatReducer,
+    blogDetailsReducer,
+    blogDeleteReducer,
+    blogCreateReducer,
+    blogUpdateReducer,
+    blogReviewCreateReducer,
+    blogTopRatedReducer,
+} from './reducers/blogReducers'
+
 import { cartReducer } from './reducers/cartReducers'
-import
-{
+import {
     orderCreateReducer,
     orderDetailsReducer,
     orderPayReducer,
@@ -71,13 +72,6 @@ const reducer = combineReducers({
     categoryCreate: categoryCreateReducer,
     categoryUpdate: categoryUpdateReducer,
 
-    shopList: shopListReducer,
-    shopByVendor: shopByVendorReducer,
-    shopDetails: shopDetailsReducer,
-    shopDelete: shopDeleteReducer,
-    shopCreate: shopCreateReducer,
-    shopUpdate: shopUpdateReducer,
-
     productList: productListReducer,
     productListByShop: productListByShopReducer,
     productListByVendor: productListByVendorReducer,
@@ -89,6 +83,17 @@ const reducer = combineReducers({
     productReviewCreate: productReviewCreateReducer,
     productTopRated: productTopRatedReducer,
     cart: cartReducer,
+
+    blogList: blogListReducer,
+    blogListByShop: blogListByShopReducer,
+    blogListByVendor: blogListByVendorReducer,
+    blogListByCat: blogListByCatReducer,
+    blogDetails: blogDetailsReducer,
+    blogDelete: blogDeleteReducer,
+    blogCreate: blogCreateReducer,
+    blogUpdate: blogUpdateReducer,
+    blogReviewCreate: blogReviewCreateReducer,
+    blogTopRated: blogTopRatedReducer,
 
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,

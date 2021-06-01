@@ -58,30 +58,6 @@ export const listBlogs = (keyword = '', pageNumber = '') => async (
   }
 }
 
-export const listBlogsByShop = (shopId) => async (
-  dispatch
-) => {
-  try {
-    dispatch({ type: BLOG_LIST_BY_SHOP_REQUEST })
-
-    const { data } = await axios.get(
-      `/api/blogs/byshop?shopId=${shopId}`
-    )
-
-    dispatch({
-      type: BLOG_LIST_BY_SHOP_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: BLOG_LIST_BY_SHOP_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
 
 export const listBlogsByVendor = (vendorId) => async (
   dispatch
@@ -108,30 +84,7 @@ export const listBlogsByVendor = (vendorId) => async (
   }
 }
 
-export const listBlogsByCat = (catId) => async (
-  dispatch
-) => {
-  try {
-    dispatch({ type: BLOG_LIST_BY_CATEGORY_REQUEST })
 
-    const { data } = await axios.get(
-      `/api/blogs/bycat?catId=${catId}`
-    )
-
-    dispatch({
-      type: BLOG_LIST_BY_CATEGORY_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: BLOG_LIST_BY_CATEGORY_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
 
 export const listBlogDetails = (id) => async (dispatch) => {
   try {

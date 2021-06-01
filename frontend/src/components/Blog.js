@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Image } from 'react-bootstrap'
 
-const Shop = ({ shop }) => {
+const Blog = ({ blog }) => {
     return (
         <Card className='my-3 p-1 rounded' style={{ display: 'block', width: '100%', height: 250 }}>
-            <Link to={`/shopscreen/${shop._id}`}>
-                <Image style={{ display: 'block', width: '100%', height: 150 }} src={`/api${shop.image}`} variant='top' fluid />
+            <Link to={`/blogscreen/${blog._id}`}>
+                <Image style={{ display: 'block', width: '100%', height: 150 }} src={`${blog.image}`} variant='top' fluid />
                 <Card.Body>
                     <Card.Title as='div'>
-                        <strong>{shop.name}</strong>
+                        <strong>{blog.title}</strong>
                     </Card.Title>
                 </Card.Body>
             </Link>
@@ -17,4 +17,4 @@ const Shop = ({ shop }) => {
     )
 }
 
-export default Shop
+export default Blog

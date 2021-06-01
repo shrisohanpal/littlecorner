@@ -2,8 +2,7 @@ import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 
-const protect = asyncHandler(async (req, res, next) =>
-{
+const protect = asyncHandler(async (req, res, next) => {
   let token
 
   if (
@@ -31,8 +30,7 @@ const protect = asyncHandler(async (req, res, next) =>
   }
 })
 
-const admin = (req, res, next) =>
-{
+const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next()
   } else {
@@ -41,8 +39,7 @@ const admin = (req, res, next) =>
   }
 }
 
-const vendor = (req, res, next) =>
-{
+const vendor = (req, res, next) => {
   if (req.user && req.user.isVendor) {
     next()
   } else {
@@ -51,8 +48,7 @@ const vendor = (req, res, next) =>
   }
 }
 
-const adminOrVendor = (req, res, next) =>
-{
+const adminOrVendor = (req, res, next) => {
   if (req.user && (req.user.isAdmin || req.user.isVendor)) {
     next()
   } else {
@@ -61,4 +57,13 @@ const adminOrVendor = (req, res, next) =>
   }
 }
 
-export { protect, admin, vendor, adminOrVendor }
+const adminOrBlogger = (req, res, next) => {
+  if (req.user && (req.user.isAdmin || req.user.isBlogger)) {
+    next()
+  } else {
+    res.status(401)
+    throw new Error('Not authorized')
+  }
+}
+
+export { protect, admin, vendor, adminOrVendor, adminOrBlogger }
