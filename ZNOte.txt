@@ -1,15 +1,30 @@
-        WORK DONE ON LITTLE CORNER
+        *WORK DONE ON LITTLE CORNER*
 
-    1. User CRUD Operation Done.        
-    2. Categories CRUD Operation Done.
-    3. Products CRUD Operation Done.    
-    4. Blogs CRUD Operation Done.     
-    5. Orders CRUD Operation Done.           
-    6. Admin Dashboard & all functionalities Done.
-    7. Blogger DashBoard & all functionalities Done.
-    8. Vendor Dashboard & all functionalities Done.
+    *User*
+    1. Login, Logout, Register, Forgot Password.
+
+    *Categories*        
+    2. Create, Read, Update, Delete Categories.
+
+    *Products*
+    3. Create, Read, Update, Delete Products.    
+
+    *Blogs*
+    4. Create, Read, Update, Delete Blogs.     
+
+    *Orders*
+    5. Create Orders, Show Orders, Update Orders.
+
+    *Admin DashBoard*           
+    6. Users: UsersList, Read Users Data, Update User, Delete Users.
+    7. Categories, Products, Blogs: Create, Read, Update, Delete.
+    8. Orders: Read, Update.
+
+   *Blogger DashBoard*           
+    10. Blogs: Create, Read, Update, Delete.
+   
+    *Vendor DashBoard*           
+    11. Products: Create, Read, Update, Delete.
+    12. Orders: Read, Update.
 
 
-        REMAINING
-    1. Payment Recived: 0%
-    2. Payment Remaiing: 100%

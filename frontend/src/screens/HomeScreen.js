@@ -24,9 +24,9 @@ const HomeScreen = () => {
     }, [dispatch])
 
     return (
-        <Container className='my-3 py-3'>
+        <Container className='my-3'>
             <h2>Find Something Different</h2>
-            <div style={{ height: 50 }} />
+            <div style={{ height: 20 }} />
             <Row>
                 <Col xs={12} sm={12} lg={6} xl={6} style={{ padding: 10 }}>
                     <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/1.webp'} fluid />

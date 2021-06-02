@@ -72,12 +72,12 @@ const Header = () => {
                 }
 
                 <div onClick={getUserLocation}>
-                    <Nav.Link>
+                    <Nav.Link className={window.innerWidth < 769 && 'px-0 mx-1'}>
                         <i className='fas fa-map-marker-alt' style={{ fontSize: 30 }}></i>
                     </Nav.Link>
                 </div>
                 <LinkContainer to='/cart'>
-                    <Nav.Link>
+                    <Nav.Link className={window.innerWidth < 769 && 'px-0 mx-1'}>
                         <i className='fas fa-cart-plus' style={{ fontSize: 30 }}></i>
                     </Nav.Link>
                 </LinkContainer>
