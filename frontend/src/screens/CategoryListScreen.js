@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Container, Table, Button, Row, Col } from 'react-bootstrap'
+import { Container, Table, Button, Row, Col, Image } from 'react-bootstrap'
 import { CircularProgress } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
-import
-{
+import {
     listCategorys,
     deleteCategory,
     createCategory,
 } from '../actions/categoryActions'
 import { CATEGORY_CREATE_RESET } from '../constants/categoryConstants'
 
-const CategoryListScreen = ({ history, match }) =>
-{
+const CategoryListScreen = ({ history, match }) => {
     const dispatch = useDispatch()
 
     const categoryList = useSelector((state) => state.categoryList)
@@ -38,8 +36,7 @@ const CategoryListScreen = ({ history, match }) =>
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
-    useEffect(() =>
-    {
+    useEffect(() => {
         dispatch({ type: CATEGORY_CREATE_RESET })
 
         if (!userInfo || !userInfo.isAdmin) {
@@ -60,15 +57,13 @@ const CategoryListScreen = ({ history, match }) =>
         createdCategory,
     ])
 
-    const deleteHandler = (id) =>
-    {
+    const deleteHandler = (id) => {
         if (window.confirm('Are you sure')) {
             dispatch(deleteCategory(id))
         }
     }
 
-    const createCategoryHandler = () =>
-    {
+    const createCategoryHandler = () => {
         dispatch(createCategory())
     }
 
@@ -93,40 +88,46 @@ const CategoryListScreen = ({ history, match }) =>
             ) : error ? (
                 <Message variant='danger'>{error}</Message>
             ) : (
-                        <>
-                            <Table striped bordered hover responsive className='table-sm'>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>NAME</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {categorys.map((category) => (
-                                        <tr key={category._id}>
-                                            <td>{category._id}</td>
-                                            <td>{category.name}</td>
-                                            <td>
-                                                <LinkContainer to={`/admin/category/${category._id}/edit`}>
-                                                    <Button variant='light' className='btn-sm'>
-                                                        <i className='fas fa-edit'></i>
-                                                    </Button>
-                                                </LinkContainer>
-                                                <Button
-                                                    variant='danger'
-                                                    className='btn-sm'
-                                                    onClick={() => deleteHandler(category._id)}
-                                                >
-                                                    <i className='fas fa-trash'></i>
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        </>
-                    )}
+                <>
+                    <Table striped bordered hover responsive className='table-sm'>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>CREATED AT</th>
+                                <th>UPDATED AT</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {categorys.map((category) => (
+                                <tr key={category._id}>
+                                    <td style={{ width: 60 }}><Image src={category.image} style={{ width: 40, height: 40, borderRadius: 2 }} /></td>
+                                    <td>{category._id}</td>
+                                    <td>{category.name}</td>
+                                    <td>{category.createdAt.substring(0, 10)}</td>
+                                    <td>{category.updatedAt.substring(0, 10)}</td>
+                                    <td>
+                                        <LinkContainer to={`/admin/category/${category._id}/edit`}>
+                                            <Button variant='light' className='btn-sm'>
+                                                <i className='fas fa-edit'></i>
+                                            </Button>
+                                        </LinkContainer>
+                                        <Button
+                                            variant='danger'
+                                            className='btn-sm'
+                                            onClick={() => deleteHandler(category._id)}
+                                        >
+                                            <i className='fas fa-trash'></i>
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </>
+            )}
         </Container>
     )
 }

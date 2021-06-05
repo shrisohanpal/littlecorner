@@ -6,11 +6,13 @@ import colors from 'colors'
 import users from './data/users.js'
 import categorys from './data/categorys.js'
 import blogs from './data/blogs.js'
+import posts from './data/posts.js'
 import products from './data/products.js'
 
 import User from './models/userModel.js'
 import Category from './models/categoryModel.js'
 import Blog from './models/blogModel.js'
+import Post from './models/postModel.js'
 import Product from './models/productModel.js'
 import Order from './models/orderModel.js'
 
@@ -23,6 +25,7 @@ const importData = async () => {
     try {
         await Order.deleteMany()
         await Product.deleteMany()
+        await Post.deleteMany()
         await Blog.deleteMany()
         await Category.deleteMany()
         await User.deleteMany()
@@ -42,8 +45,12 @@ const importData = async () => {
         const sampleBlogs = blogs.map((blog) => {
             return { ...blog, user: adminUser }
         })
-
         await Blog.insertMany(sampleBlogs)
+
+        const samplePosts = posts.map((post) => {
+            return { ...post, user: adminUser }
+        })
+        await Post.insertMany(samplePosts)
 
         const sampleProducts = products.map((product) => {
             return { ...product, user: vendorUser, category: cat1 }
@@ -63,7 +70,8 @@ const destroyData = async () => {
     try {
         await Order.deleteMany()
         await Product.deleteMany()
-        await Shop.deleteMany()
+        await Post.deleteMany()
+        await Blog.deleteMany()
         await Category.deleteMany()
         await User.deleteMany()
 

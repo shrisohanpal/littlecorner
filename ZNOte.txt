@@ -29,9 +29,11 @@
 
 
         *Remaining Wokr*
-    1. Categories k Saath Sub Categories Bhi Add karni, aur categories me image bhi add karni hai
-    2. Blogs me Posts bhi add karni hai
-    3. Blogs me Comments
-    4. Products me rating bhi karni hai
-    5. Search Bar activate karna hai
+    1. Categories k Saath Sub Categories Bhi Add karni, 
+    aur categories me image bhi add karni hai                                             -->> 1 hour
+    2. Blogs me Posts bhi add karni hai                                                   -->> 1 hour
+    3. Blogs me Comments                                                                  -->> 1 hour
+    4. Products me rating bhi karni hai                                                   -->> 30 min
+    5. Search Bar activate karna hai                                                      -->> 30 min
+       total                                                                              -->> 4 hours
 
