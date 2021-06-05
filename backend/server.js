@@ -10,6 +10,7 @@ import cors from 'cors'
 import userRoutes from './routes/userRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import blogRoutes from './routes/blogRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
@@ -30,6 +31,7 @@ app.use(express.json())
 app.use('/api/users', userRoutes)
 app.use('/api/categorys', categoryRoutes)
 app.use('/api/blogs', blogRoutes)
+app.use('/api/posts', postRoutes)
 app.use('/api/products', productRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/upload', uploadRoutes)

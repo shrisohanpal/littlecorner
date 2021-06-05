@@ -44,6 +44,19 @@ import {
     blogTopRatedReducer,
 } from './reducers/blogReducers'
 
+import {
+    postListReducer,
+    postListByShopReducer,
+    postListByVendorReducer,
+    postListByCatReducer,
+    postDetailsReducer,
+    postDeleteReducer,
+    postCreateReducer,
+    postUpdateReducer,
+    postReviewCreateReducer,
+    postTopRatedReducer,
+} from './reducers/postReducers'
+
 import { cartReducer } from './reducers/cartReducers'
 import {
     orderCreateReducer,
@@ -94,6 +107,17 @@ const reducer = combineReducers({
     blogUpdate: blogUpdateReducer,
     blogReviewCreate: blogReviewCreateReducer,
     blogTopRated: blogTopRatedReducer,
+
+    postList: postListReducer,
+    postListByShop: postListByShopReducer,
+    postListByVendor: postListByVendorReducer,
+    postListByCat: postListByCatReducer,
+    postDetails: postDetailsReducer,
+    postDelete: postDeleteReducer,
+    postCreate: postCreateReducer,
+    postUpdate: postUpdateReducer,
+    postReviewCreate: postReviewCreateReducer,
+    postTopRated: postTopRatedReducer,
 
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,

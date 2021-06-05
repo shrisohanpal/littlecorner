@@ -1,21 +1,33 @@
 const categorys = [
     {
-        name: 'Electronics'
+        name: 'Electronics',
+        image: '/images/airpods.jpg',
+        subCategoreis: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
     },
     {
-        name: 'Grocery'
+        name: 'Grocery',
+        image: '/images/airpods.jpg',
+        subCategoreis: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
     },
     {
-        name: 'Furnitures'
+        name: 'Furnitures',
+        image: '/images/airpods.jpg',
+        subCategoreis: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
     },
     {
-        name: 'E-Service'
+        name: 'E-Service',
+        image: '/images/airpods.jpg',
+        subCategoreis: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
     },
     {
-        name: 'Building Material'
+        name: 'Building Material',
+        image: '/images/airpods.jpg',
+        subCategoreis: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
     },
     {
-        name: 'Jewellery'
+        name: 'Jewellery',
+        image: '/images/airpods.jpg',
+        subCategoreis: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
     },
 ]
 

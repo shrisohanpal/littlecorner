@@ -1,4 +1,4 @@
-const shops = [
+const blogs = [
     {
         title: 'Blog 1',
         image: '/images/blog.webp',
@@ -41,4 +41,4 @@ const shops = [
     },
 ]
 
-export default shops
+export default blogs

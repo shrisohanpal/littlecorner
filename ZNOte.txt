@@ -28,3 +28,10 @@
     12. Orders: Read, Update.
 
 
+        *Remaining Wokr*
+    1. Categories k Saath Sub Categories Bhi Add karni, aur categories me image bhi add karni hai
+    2. Blogs me Posts bhi add karni hai
+    3. Blogs me Comments
+    4. Products me rating bhi karni hai
+    5. Search Bar activate karna hai
+

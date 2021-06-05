@@ -100,8 +100,15 @@ const DashboardScreen = () => {
                         <Box
                             title="My Blogs"
                             bgColor='primary'
-                            text="Click Here to see the data all about Blogs. Like: blogId, Blog user, about Blogger and Blog status..."
+                            text="Click Here to see the data all about Blogs. Like: blogId, Blog posts, about Blogger and Blog status..."
                             redirect='/blogger/bloglist'
+                        />
+
+                        <Box
+                            title="My Posts"
+                            bgColor='success'
+                            text="Click Here to see all your Posts. Like: postId, Post Blog, likes, comments, about post status, etc ..."
+                            redirect='/blogger/postlist'
                         />
                     </Row>
                 </>
