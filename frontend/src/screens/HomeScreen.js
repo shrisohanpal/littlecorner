@@ -5,12 +5,16 @@ import { CircularProgress } from '@material-ui/core'
 import Product from '../components/Product'
 import Blog from '../components/Blog'
 import Message from '../components/Message'
+import { listCategorys } from '../actions/categoryActions'
 import { listProducts } from '../actions/productActions'
 import { listBlogs } from '../actions/blogActions'
 import OwlCarousel from 'react-owl-carousel';
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
+
+    const categoryList = useSelector(state => state.categoryList)
+    const { loading: loadingCategorys, error: errorCategorys, categorys } = categoryList
 
     const productList = useSelector(state => state.productList)
     const { loading: loadingProducts, error: errorProducts, products } = productList
@@ -19,6 +23,7 @@ const HomeScreen = () => {
     const { loading: loadingBlogs, error: errorBlogs, blogs } = blogList
 
     useEffect(() => {
+        dispatch(listCategorys())
         dispatch(listProducts())
         dispatch(listBlogs())
     }, [dispatch])
@@ -47,6 +52,31 @@ const HomeScreen = () => {
                         </Col>
                     </Row>
                 </Col>
+            </Row>
+
+            <h2>Little Corner Picks </h2>
+            <Row>
+                {loadingCategorys ? (<CircularProgress />)
+                    : errorCategorys
+                        ? (<Message variant='danger'>{errorCategorys}</Message>)
+                        :
+                        categorys.map((singleCat) => (
+                            <Col xs={12} sm={6} lg={4} xl={3}>
+                                <Card style={{ padding: 10, margin: 10 }}>
+                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                        <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={singleCat.image} />
+                                        <Card.Title style={{ margin: 10 }}>{singleCat.name}</Card.Title>
+                                    </div>
+                                    <Card.Body>
+                                        {singleCat.subCategories.map((singleSubCat) => (
+                                            <Card.Text>{singleSubCat}</Card.Text>
+                                        ))}
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        )
+                        )
+                }
             </Row>
 
             <h2>Little Corner Picks</h2>

@@ -14,6 +14,7 @@ const CategoryEditScreen = ({ match, history }) => {
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
   const [subCats, setSubCats] = useState([])
+  const [newSubCat, setNewSubCat] = useState('')
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
@@ -37,6 +38,7 @@ const CategoryEditScreen = ({ match, history }) => {
         dispatch(listCategoryDetails(categoryId))
       } else {
         setName(category.name)
+        setImage(category.image)
         setSubCats(category.subCategories)
       }
     }
@@ -70,14 +72,18 @@ const CategoryEditScreen = ({ match, history }) => {
     dispatch(
       updateCategory({
         _id: categoryId,
-        name
+        name,
+        image,
+        subCategories: subCats
       })
     )
   }
 
-  const deleteHandler = () => {
-    console.log('Called')
+  const deleteHandler = (inputSubCat) => {
+    setSubCats([...subCats.filter((subCat) => subCat !== inputSubCat)])
   }
+
+
   return (
     <Container>
       <Link to='/admin/categorylist' className='btn btn-light my-3'>
@@ -130,13 +136,28 @@ const CategoryEditScreen = ({ match, history }) => {
                       <Button
                         variant='danger'
                         className='btn-sm'
-                        onClick={() => deleteHandler(category._id)}
+                        onClick={() => deleteHandler(subCat)}
                       >
                         <i className='fas fa-trash'></i>
                       </Button>
                     </td>
                   </tr>
                 ))}
+                <tr>
+                  <td>
+                    <Form.Control
+                      type='name'
+                      placeholder='Add new Sub Category'
+                      value={newSubCat}
+                      onChange={(e) => setNewSubCat(e.target.value)}
+                    ></Form.Control>
+                  </td>
+                  <td><Button variant='primary' className='btn-sm'
+                    onClick={() => { setSubCats([...subCats, newSubCat]); setNewSubCat('') }}
+                  >
+                    <i className='fas fa-plus-circle'></i>
+                  </Button></td>
+                </tr>
               </tbody>
             </Table>
             <Button type='submit' variant='primary'>

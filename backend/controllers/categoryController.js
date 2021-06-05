@@ -56,12 +56,14 @@ const createCategory = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const updateCategory = asyncHandler(async (req, res) => {
     console.log(req.params.id)
-    const { name } = req.body
+    const { name, image, subCategories } = req.body
 
     const category = await Category.findById(req.params.id)
 
     if (category) {
         category.name = name
+        category.image = image
+        category.subCategories = subCategories
         category.user = req.user._id
         const updatedCategory = await category.save()
         res.json(updatedCategory)
