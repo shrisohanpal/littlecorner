@@ -22,7 +22,7 @@ import BlogListScreen from './screens/BlogListScreen'
 import BlogEditScreen from './screens/BlogEditScreen'
 
 
-//import BlogScreen from './screens/BlogScreen'
+import PostScreen from './screens/PostScreen'
 import BloggerPostListScreen from './screens/BloggerPostListScreen'
 import PostEditScreen from './screens/PostEditScreen'
 
@@ -69,6 +69,9 @@ const App = () => {
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/placeorder' component={PlaceOrderScreen} />
         <Route path='/order/:id' component={OrderScreen} />
+
+        <Route path='/blog/:id' component={BlogScreen} />
+        <Route path='/post/:id' component={PostScreen} />
 
         <Route path='/dashboard' component={DashboardScreen} />
 

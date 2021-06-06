@@ -35,3 +35,7 @@
     3. Products -> 6
     4. Blogs -> 10
     5. Posts -> 12
+
+    Remainig Work
+    1. Blog Screen
+    2. Post Screen

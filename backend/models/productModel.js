@@ -18,10 +18,6 @@ const productSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
     },
-    shop: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Shop',
-    },
     name: {
         type: String,
     },
@@ -66,7 +62,18 @@ const productSchema = mongoose.Schema({
     exchange: {
         type: Number,
         default: 0
-    }
+    },
+    reviews: [reviewSchema],
+    rating: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    numReviews: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
 }, {
     timestamps: true
 })

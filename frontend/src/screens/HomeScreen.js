@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Row, Col, Carousel, Image, Container, Card, Button } from 'react-bootstrap'
 import { CircularProgress } from '@material-ui/core'
 import Product from '../components/Product'
@@ -218,8 +219,10 @@ const HomeScreen = () => {
                                     <Card.Img variant="top" src={post.image} />
                                     <Card.Body>
                                         <Card.Title>{post.title}</Card.Title>
-                                        <Card.Text>{post.description}</Card.Text>
-                                        <Button variant="primary">Read More</Button>
+                                        <Card.Text>{post.description.substring(0, 80)}.....</Card.Text>
+                                        <Link to={`/post/${post._id}`}>
+                                            <Button variant="primary">Read More</Button>
+                                        </Link>
                                     </Card.Body>
                                 </Card>
                             </Col>

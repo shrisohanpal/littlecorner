@@ -22,6 +22,11 @@ const postSchema = mongoose.Schema(
         description: {
             type: String,
         },
+        likes: {
+            type: Number,
+            default: 21
+        },
+        comments: [{ type: String }]
     },
     {
         timestamps: true,
