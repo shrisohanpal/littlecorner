@@ -66,6 +66,12 @@ const DashboardScreen = () => {
                             text="Click Here to see the data all about Blogs. Like: blogId, Blog user, about Blogger and Blog status..."
                             redirect='/admin/bloglist'
                         />
+                        <Box
+                            title="Post List"
+                            bgColor='dark'
+                            text="Click Here to see the data all about Posts. Like: postId, Post user, about Blogger and Post status..."
+                            redirect='/admin/postlist'
+                        />
                     </Row>
                 </>
             )}
@@ -99,14 +105,14 @@ const DashboardScreen = () => {
                     <Row>
                         <Box
                             title="My Blogs"
-                            bgColor='primary'
+                            bgColor='info'
                             text="Click Here to see the data all about Blogs. Like: blogId, Blog posts, about Blogger and Blog status..."
                             redirect='/blogger/bloglist'
                         />
 
                         <Box
                             title="My Posts"
-                            bgColor='success'
+                            bgColor='dark'
                             text="Click Here to see all your Posts. Like: postId, Post Blog, likes, comments, about post status, etc ..."
                             redirect='/blogger/postlist'
                         />

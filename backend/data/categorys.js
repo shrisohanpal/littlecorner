@@ -1,34 +1,54 @@
 const categorys = [
     {
         name: 'Electronics',
-        image: '/images/airpods.jpg',
-        subCategories: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
+        image: '/uploads//cat1.png',
+        subCategories: ['Accessories', 'Cameras & Photography', 'Computers & Accessories']
     },
     {
         name: 'Grocery',
-        image: '/images/airpods.jpg',
-        subCategories: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
+        image: '/uploads//cat2.png',
+        subCategories: ['Frozen Foods', 'Produce', 'Cleaners', 'Paper Goods']
     },
     {
-        name: 'Furnitures',
-        image: '/images/airpods.jpg',
-        subCategories: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
+        name: 'Apparel',
+        image: '/uploads//cat3.png',
+        subCategories: ['Outer wear', 'Swimwear', 'Casual wear', 'Normal Wear']
     },
     {
-        name: 'E-Service',
-        image: '/images/airpods.jpg',
-        subCategories: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
+        name: 'Furniture',
+        image: '/uploads//cat4.png',
+        subCategories: ['Sofa', 'Table', 'Chairs', 'Almaari']
     },
     {
-        name: 'Building Material',
-        image: '/images/airpods.jpg',
-        subCategories: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
+        name: 'Medicines',
+        image: '/uploads//cat5.png',
+        subCategories: ['Organic', 'Supliments', 'Drugs', 'Tablets']
+    },
+    {
+        name: 'Building Materials',
+        image: '/uploads//cat6.png',
+        subCategories: ['Cement', 'Structural Steel', 'Reinforcement Steel', 'Normal Steel']
+    },
+    {
+        name: 'Automobile',
+        image: '/uploads//cat7.png',
+        subCategories: ['Armored car', 'Electric Car', 'Solar vehicle', 'Texi']
+    },
+    {
+        name: 'Organic Products',
+        image: '/uploads//cat8.png',
+        subCategories: ['Green Foods', 'Fruits', 'Vegitables', 'Masale']
     },
     {
         name: 'Jewellery',
-        image: '/images/airpods.jpg',
-        subCategories: ['Sub 1', 'Sub 2', 'Sub 3', 'Sub 4']
+        image: '/uploads//cat9.png',
+        subCategories: ['Anklet', 'Barrette', 'Bindi', 'Temple']
     },
+    {
+        name: "Women's Fashion",
+        image: '/uploads//cat10.png',
+        subCategories: ['Apparel', 'Footwear', 'Bags', 'Jewellery']
+    }
 ]
 
 export default categorys

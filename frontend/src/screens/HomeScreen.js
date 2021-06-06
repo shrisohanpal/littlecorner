@@ -8,6 +8,7 @@ import Message from '../components/Message'
 import { listCategorys } from '../actions/categoryActions'
 import { listProducts } from '../actions/productActions'
 import { listBlogs } from '../actions/blogActions'
+import { listPosts } from '../actions/postActions'
 import OwlCarousel from 'react-owl-carousel';
 
 const HomeScreen = () => {
@@ -22,15 +23,19 @@ const HomeScreen = () => {
     const blogList = useSelector(state => state.blogList)
     const { loading: loadingBlogs, error: errorBlogs, blogs } = blogList
 
+    const postList = useSelector(state => state.postList)
+    const { loading: loadingPosts, error: errorPosts, posts } = postList
+
     useEffect(() => {
         dispatch(listCategorys())
         dispatch(listProducts())
         dispatch(listBlogs())
+        dispatch(listPosts())
     }, [dispatch])
 
     return (
         <Container className='my-3'>
-            <h2>Find Something Different</h2>
+            <h2>Get Something Different</h2>
             <div style={{ height: 20 }} />
             <Row>
                 <Col xs={12} sm={12} lg={6} xl={6} style={{ padding: 10 }}>
@@ -54,7 +59,7 @@ const HomeScreen = () => {
                 </Col>
             </Row>
 
-            <h2>Little Corner Picks </h2>
+            <h2 className='pt-3 my-3'>My Little Corner Categories </h2>
             <Row>
                 {loadingCategorys ? (<CircularProgress />)
                     : errorCategorys
@@ -63,7 +68,10 @@ const HomeScreen = () => {
                         categorys.map((singleCat) => (
                             <Col xs={12} sm={6} lg={4} xl={3}>
                                 <Card style={{ padding: 10, margin: 10 }}>
-                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                    <div style={{
+                                        display: 'flex', flexDirection: 'row',
+                                        alignItems: 'center'
+                                    }}>
                                         <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={singleCat.image} />
                                         <Card.Title style={{ margin: 10 }}>{singleCat.name}</Card.Title>
                                     </div>
@@ -79,127 +87,9 @@ const HomeScreen = () => {
                 }
             </Row>
 
-            <h2>Little Corner Picks</h2>
-
-            <Row>
-                <Col xs={12} sm={6} lg={4} xl={3}>
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs={12} sm={6} lg={4} xl={3} >
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs={12} sm={6} lg={4} xl={3}>
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs={12} sm={6} lg={4} xl={3} >
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-
-                <Col xs={12} sm={6} lg={4} xl={3}>
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs={12} sm={6} lg={4} xl={3} >
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-
-                <Col xs={12} sm={6} lg={4} xl={3}>
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs={12} sm={6} lg={4} xl={3} >
-                    <Card style={{ padding: 10, margin: 10 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={'/images/banners/women.webp'} />
-                            <Card.Title style={{ margin: 10 }}>Women's Fashion</Card.Title>
-                        </div>
-                        <Card.Body>
-                            <Card.Text>Apparel</Card.Text>
-                            <Card.Text>Footwear</Card.Text>
-                            <Card.Text>Bags</Card.Text>
-                            <Card.Text>Jewellery</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-
-
-            <h3 className='my-2'>Featured Products</h3>
+            <center className='mt-3 pt-3'>
+                <h3 className='mt-3' style={{ color: '#FFD700' }}>5 Star <i className='fas fa-star'></i> Products</h3>
+            </center>
             {loadingProducts ? (<CircularProgress />)
                 : errorProducts
                     ? (<Message variant='danger'>{errorProducts}</Message>)
@@ -218,7 +108,47 @@ const HomeScreen = () => {
                     )
             }
 
+            <center className='mt-3 pt-3'>
+                <h3 className='mt-3'>Recently Updated Products</h3>
+            </center>
+            {loadingProducts ? (<CircularProgress />)
+                : errorProducts
+                    ? (<Message variant='danger'>{errorProducts}</Message>)
+                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                        className="owl-theme"
+                        loop
+                        nav
+                        margin={8} autoplay={true} autoplayTimeout={2000}>
+                        {products.map((product) => (
+                            <div key={product._id}>
+                                <Product product={product} />
+                            </div>
 
+                        ))}
+                    </OwlCarousel>
+                    )
+            }
+
+            <center className='mt-3 pt-3'>
+                <h3 className='mt-3'>New Products</h3>
+            </center>
+            {loadingProducts ? (<CircularProgress />)
+                : errorProducts
+                    ? (<Message variant='danger'>{errorProducts}</Message>)
+                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                        className="owl-theme"
+                        loop
+                        nav
+                        margin={8} autoplay={true} autoplayTimeout={2000}>
+                        {products.map((product) => (
+                            <div key={product._id}>
+                                <Product product={product} />
+                            </div>
+
+                        ))}
+                    </OwlCarousel>
+                    )
+            }
 
             <h2 className="py-3 my-3">Little Corner Shopper Favourites</h2>
 
@@ -277,7 +207,25 @@ const HomeScreen = () => {
                     )
             }
 
-
+            <h3 className='my-2'>Recent Posts</h3>
+            <Row>
+                {loadingPosts ? (<CircularProgress />)
+                    : errorPosts
+                        ? (<Message variant='danger'>{errorPosts}</Message>)
+                        : posts.map((post) => (
+                            <Col xs={12} sm={6} lg={4} xl={3}>
+                                <Card style={{ padding: 10, margin: 10 }}>
+                                    <Card.Img variant="top" src={post.image} />
+                                    <Card.Body>
+                                        <Card.Title>{post.title}</Card.Title>
+                                        <Card.Text>{post.description}</Card.Text>
+                                        <Button variant="primary">Read More</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))
+                }
+            </Row>
         </Container>
     )
 }

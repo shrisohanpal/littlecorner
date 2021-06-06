@@ -21,6 +21,11 @@ import BlogScreen from './screens/BlogScreen'
 import BlogListScreen from './screens/BlogListScreen'
 import BlogEditScreen from './screens/BlogEditScreen'
 
+
+//import BlogScreen from './screens/BlogScreen'
+import BloggerPostListScreen from './screens/BloggerPostListScreen'
+import PostEditScreen from './screens/PostEditScreen'
+
 import CartScreen from './screens/CartScreen'
 import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
@@ -75,11 +80,14 @@ const App = () => {
         <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
         <Route path='/admin/bloglist' component={BlogListScreen} />
         <Route path='/admin/blog/:id/edit' component={BlogEditScreen} />
+        <Route path='/admin/post/:id/edit' component={PostEditScreen} />
         <Route path='/admin/orderlist' component={OrderListScreen} />
 
         <Route path='/vendor/productlist' component={VendorsProductListScreen} />
         <Route path='/vendor/orderlist' component={VendorsOrderListScreen} />
+
         <Route path='/blogger/bloglist' component={BloggerBlogListScreen} />
+        <Route path='/blogger/postlist' component={BloggerPostListScreen} />
 
         <Route path='/privacypolicy' component={PrivacypolicyScreen} />
         <Route path='/returnpolicy' component={ReturnPolicyScreen} />

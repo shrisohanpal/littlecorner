@@ -7,8 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
 
-const LoginScreen = ({ match, location, history }) =>
-{
+const LoginScreen = ({ match, location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPass, setShowPass] = useState(false)
@@ -23,15 +22,18 @@ const LoginScreen = ({ match, location, history }) =>
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+      if (userInfo.isAdmin || userInfo.isVendor || userInfo.isBlogger) {
+        history.push('/dashboard')
+      }
+      else {
+        history.push(redirect)
+      }
     }
   }, [history, userInfo, redirect])
 
-  const submitHandler = (e) =>
-  {
+  const submitHandler = (e) => {
     e.preventDefault()
     dispatch(login(email, password))
   }

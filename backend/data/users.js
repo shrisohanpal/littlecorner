@@ -10,17 +10,52 @@ const users = [
         isBlogger: true
     },
     {
-        name: 'John Doe',
-        email: 'john@example.com',
+        name: 'Venodr User',
+        email: 'venodr@example.com',
         password: bcrypt.hashSync('123456', 10),
         isVendor: true
     },
     {
-        name: 'Jane Doe',
-        email: 'jane@example.com',
+        name: 'Blogger User',
+        email: 'blogger@example.com',
         password: bcrypt.hashSync('123456', 10),
         isBlogger: true
     },
+    {
+        name: 'Customer 1',
+        email: 'customer@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    },
+    {
+        name: 'Customer 2',
+        email: 'customer2@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    },
+    {
+        name: 'Customer 3',
+        email: 'customer3@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    },
+    {
+        name: 'Customer 4',
+        email: 'customer4@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    },
+    {
+        name: 'Customer 5',
+        email: 'customer5@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    },
+    {
+        name: 'Customer 6',
+        email: 'customer6@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    },
+    {
+        name: 'Customer 7',
+        email: 'customer7@example.com',
+        password: bcrypt.hashSync('123456', 10),
+    }
 ]
 
 export default users

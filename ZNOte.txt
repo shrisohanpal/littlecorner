@@ -28,12 +28,10 @@
     12. Orders: Read, Update.
 
 
-        *Remaining Wokr*
-    1. Categories k Saath Sub Categories Bhi Add karni, 
-    aur categories me image bhi add karni hai                                             -->> 1 hour
-    2. Blogs me Posts bhi add karni hai                                                   -->> 1 hour
-    3. Blogs me Comments                                                                  -->> 1 hour
-    4. Products me rating bhi karni hai                                                   -->> 30 min
-    5. Search Bar activate karna hai                                                      -->> 30 min
-       total                                                                              -->> 4 hours
+    ### RAW DATA ### 
 
+    1. users 10 -> 1 Admin, 1 Blogger, 1 Vendor, 7 Customers
+    2. categories -> 10 Categories
+    3. Products -> 6
+    4. Blogs -> 10
+    5. Posts -> 12
