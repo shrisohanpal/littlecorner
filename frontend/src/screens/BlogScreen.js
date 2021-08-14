@@ -1,25 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, Image, ListGroup, Card, Button, Carousel, Form } from 'react-bootstrap'
-import { CircularProgress } from '@material-ui/core'
 import { listBlogDetails } from '../actions/blogActions'
+import { CircularProgress } from '@material-ui/core'
 import Message from '../components/Message'
+import { listPosts } from '../actions/postActions'
+import OwlCarousel from 'react-owl-carousel';
 
-const BlogScreen = ({ history, match }) => {
-    const [qty, setQty] = useState(1)
+const BlogScreen = ({ match }) => {
+
     const dispatch = useDispatch()
 
     const blogDetails = useSelector(state => state.blogDetails)
     const { loading, error, blog } = blogDetails
 
+
+    const postList = useSelector(state => state.postList)
+    const { loading: loadingPosts, error: errorPosts, posts } = postList
+
+
     useEffect(() => {
-        dispatch(listBlogDetails(match.params.id))
+        if (!blog._id || blog._id !== match.params.id) {
+            dispatch(listBlogDetails(match.params.id))
+        }
+        dispatch(listPosts())
+
     }, [dispatch, match])
 
-    const addToCartHandler = () => {
-        history.push(`/cart/${match.params.id}?qty=${qty}`)
-    }
 
     return (
         <Container>
@@ -31,136 +39,43 @@ const BlogScreen = ({ history, match }) => {
                 error ? <Message varint='danger'>error</Message>
                     :
                     (
-                        <Row>
-                            <Col md={6}>
-                                <Carousel pause='hover' className='bg-light' style={{ paddingTop: '0%' }} >
-                                    {blog.images &&
-                                        blog.images.map((x, k) => (
-                                            <Carousel.Item key={k}>
-                                                <div style={{ height: 400 }}>
-                                                    <Image style={{ display: 'block', width: '100%', height: '100%', borderRadius: '1%', margin: '0%' }}
-                                                        src={`/api${x}`}
-                                                        alt={blog.name} fluid />
-                                                </div>
-                                            </Carousel.Item>
-                                        ))
-                                    }
-                                </Carousel>
-                            </Col>
-                            <Col md={3}>
-                                <ListGroup variant='flush'>
-                                    <ListGroup.Item>
-                                        <h3>{blog.name}</h3>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item>
-                                        BlogDetails
-                                    </ListGroup.Item>
-                                    <ListGroup.Item>
-                                        Price: ₹{blog.price}
-                                    </ListGroup.Item>
-                                    <ListGroup.Item>
-                                        Description: {blog.description}
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </Col>
-                            <Col md={3}>
-                                <Card>
-                                    <ListGroup varinat='flush'>
-                                        <ListGroup.Item>
-                                            <Row>
-                                                <Col>
-                                                    Price:
-                                                </Col>
-                                                <Col>
-                                                    <strong>₹ {blog.price} </strong>
-                                                </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            <Row>
-                                                <Col>
-                                                    GST:
-                                                </Col>
-                                                <Col>
-                                                    <strong>{blog.gst} % </strong>
-                                                </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            <Row>
-                                                <Col>
-                                                    Final Price:
-                                                </Col>
-                                                <Col>
-                                                    <strong>₹ {blog.finalPrice} </strong>
-                                                </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            <Row>
-                                                <Col>
-                                                    Status:
-                                    </Col>
-                                                <Col>
-                                                    {blog.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
-                                                </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                        {blog.countInStock > 0 && (
-                                            <ListGroup.Item>
-                                                <Row>
-                                                    <Col>Qty</Col>
-                                                    <Col>
-                                                        <Form.Control
-                                                            as='select'
-                                                            value={qty}
-                                                            onChange={(e) => setQty(e.target.value)}
-                                                        >
-                                                            {[...Array(blog.countInStock).keys()].map(
-                                                                (x) => (
-                                                                    <option key={x + 1} value={x + 1}>
-                                                                        {x + 1}
-                                                                    </option>
-                                                                )
-                                                            )}
-                                                        </Form.Control>
-                                                    </Col>
-                                                </Row>
-                                            </ListGroup.Item>
-                                        )}
-                                        <ListGroup.Item>
-                                            <Button
-                                                onClick={addToCartHandler}
-                                                className='btn-block'
-                                                type='button'
-                                                disabled={blog.countInStock === 0}
-                                            >
-                                                Add to Cart
-                                            </Button>
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            {blog.returnable
-                                                ? <Message>Returnable</Message>
-                                                : <Message>Not Returnable</Message>
-                                            }
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            {blog.refundable
-                                                ? <Message>Refundable</Message>
-                                                : <Message>Not Refundable</Message>
-                                            }
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            {blog.exchange === 0
-                                                ? <Message>No Exchange</Message>
-                                                : <Message>Exchange with in {blog.exchange} days</Message>
-                                            }
-                                        </ListGroup.Item>
-                                    </ListGroup>
-                                </Card>
-                            </Col>
-                        </Row>
+                        <>
+                            <center>
+                                <h2>{blog.title}</h2>
+                            </center>
+                            <div style={{ height: 400, margin: 20 }}>
+                                <Image style={{ display: 'block', width: '100%', height: '100%', borderRadius: '1%', margin: '0%' }}
+                                    src={`${blog.image}`}
+                                    alt={blog.name} fluid />
+                            </div>
+                            <p>{blog.description}</p>
 
+                            <center className='mt-3 pt-3'>
+                                <h3 className='mt-3'> Posts</h3>
+                            </center>
+
+                            <Row>
+                                {loadingPosts ? (<CircularProgress />)
+                                    : errorPosts
+                                        ? (<Message variant='danger'>{errorPosts}</Message>)
+                                        : posts.map((post) => (
+                                            <Col xs={12} sm={6} lg={4} xl={3}>
+                                                <Card style={{ padding: 10, margin: 10 }}>
+                                                    <Card.Img variant="top" src={post.image} />
+                                                    <Card.Body>
+                                                        <Card.Title>{post.title}</Card.Title>
+                                                        <Card.Text>{post.description.substring(0, 80)}.....</Card.Text>
+                                                        <Link to={`/post/${post._id}`}>
+                                                            <Button variant="primary">Read More</Button>
+                                                        </Link>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        ))
+                                }
+                            </Row>
+
+                        </>
                     )
             }
         </Container>
