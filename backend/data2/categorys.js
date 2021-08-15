@@ -1,41 +1,41 @@
 const categorys = [
     {
-        name: 'Yoga & Meditation',
+        name: 'FITNESS & HEALTH',
         image: '/uploads//cat1.png',
         subCategories: ['Yoga Teacher Training Courses', 'Yoga & Meditation Retreats', 'Online Yoga Sessions', 'Books']
     },
     {
-        name: "Gym & Workouts",
+        name: "PERSONAL CARE",
         image: '/uploads//cat2.png',
         subCategories: ['Gym Membership', 'Pilates Training', 'Zumba Classes', 'Mixed Martial Arts Training', 'Kick Boxing', 'Cross Fit Trainings']
     },
     {
-        name: "Diet Consultations",
+        name: "TRAVEL",
         image: '/uploads//cat3.png',
         subCategories: ['Weight Loss Diet', 'Weight Gain Diet', 'Muscle Gain Diet', 'Medical Diet']
     },
     {
-        name: "Fitness Essentials",
+        name: "FOOD & DRINKS",
         image: '/uploads//cat4.png',
         subCategories: ['Gym Essentials', 'Yoga Essentials', 'Home Workout Essentials', 'HIIT Workout Essentials']
     },
     {
-        name: "Nutrition & Supplements",
+        name: "HOME & KITCHEN",
         image: '/uploads//cat5.png',
         subCategories: ['Sports Nutrition', 'Weight Loss, Wellness', 'Vitamins & Minerals', 'Ayurveda & Herbs, Proteins', 'Health Food & Drinks']
     },
     {
-        name: "Women Face Care",
+        name: "FASHION",
         image: '/uploads//cat6.png',
         subCategories: ['Face Washes', 'Face Scrubs & Packs', 'Cremes & Moisturizers', 'Toners & Cleansers', 'Sun Care', 'Lip Care']
     },
     {
-        name: "Men Face Care",
+        name: "HOBBIES & INTERESTS",
         image: '/uploads//cat7.png',
         subCategories: ['Face Washes', 'Face Scrubs & Packs', 'Sun Care', 'Beard Care', 'Beard Growth', 'Lip Care', 'Masks & Peels']
     },
     {
-        name: "Women Body Care",
+        name: "PET CARE",
         image: '/uploads//cat8.png',
         subCategories: ['Body Wash', 'Body Scrubs', 'Body Moisturizers', 'Body Sunscreens', 'Deodorants & Perfumes', 'Grooming Essentials']
     }
@@ -45,10 +45,6 @@ export default categorys
 
 /*
 
-
-
-
--
 Men Body Care
 - Body Wash
 - Deodorants & Perfumes

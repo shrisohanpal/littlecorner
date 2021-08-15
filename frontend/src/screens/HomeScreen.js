@@ -61,7 +61,7 @@ const HomeScreen = () => {
                     </Col>
                 </Row>
 
-                <h2 className='pt-3 my-3'>My Little Corner Categories </h2>
+                <h2 className='pt-3 my-3' style={{ color: '#345159', fontWeight: 800 }}>My Little Corner Categories </h2>
                 <Row>
                     {loadingCategorys ? (<CircularProgress />)
                         : errorCategorys
@@ -77,11 +77,11 @@ const HomeScreen = () => {
                                             <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={singleCat.image} />
                                             <Card.Title style={{ margin: 10 }}>{singleCat.name}</Card.Title>
                                         </div>
-                                        <Card.Body>
+                                        {/*    <Card.Body>
                                             {singleCat.subCategories.map((singleSubCat) => (
                                                 <Card.Text>{singleSubCat}</Card.Text>
                                             ))}
-                                        </Card.Body>
+                                            </Card.Body> */}
                                     </Card>
                                 </Col>
                             )
@@ -162,7 +162,7 @@ const HomeScreen = () => {
 
             <div style={{ margin: 0, padding: 0, backgroundColor: '#F5F5F5', width: '100%' }}>
                 <center className='mt-3 pt-3'>
-                    <h3 className='mt-3'>New Products</h3>
+                    <h3 className='mt-3' style={{ color: '#345159', fontWeight: 800 }}>New Products</h3>
                 </center>
                 {loadingProducts ? (<CircularProgress />)
                     : errorProducts
@@ -185,44 +185,45 @@ const HomeScreen = () => {
 
 
             <Container>
-                <h2 className="py-3 my-3">Little Corner Shopper Favourites</h2>
+                <h2 className="py-3 my-3" style={{ color: '#345159', fontWeight: 800 }}>Little Corner Shopper Favourites</h2>
                 <Row>
                     <Col xs={12} sm={6} lg={4} xl={4}>
                         <div style={{ margin: 10 }}>
-                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/herbal.webp'} />
-                            <Card.Body>
+                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/mlc-b.jpg'} />
+                            {/*  <Card.Body>
                                 <Card.Title>Editor's Pick: Immunity Boosters</Card.Title>
                                 <Card.Text>Herbal Teas, Honey & More</Card.Text>
-
                             </Card.Body>
+                          */}
                         </div>
                     </Col>
 
                     <Col xs={12} sm={6} lg={4} xl={4}>
                         <div style={{ margin: 10 }}>
-                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/lemon.webp'} />
-                            <Card.Body>
+                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/mlc-a.jpg'} />
+                            {/* <Card.Body>
                                 <Card.Title>Par-Tea Selections</Card.Title>
                                 <Card.Text>Starting at INR 170</Card.Text>
 
                             </Card.Body>
+                           */}
                         </div>
                     </Col>
 
                     <Col xs={12} sm={6} lg={4} xl={4}>
                         <div style={{ margin: 10 }}>
-                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/wood.webp'} />
-                            <Card.Body>
+                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/mlc-c.jpg'} />
+                            {/*   <Card.Body>
                                 <Card.Title>Mission Declutter</Card.Title>
                                 <Card.Text>Portable & Budget-Friendly Storage Organisers</Card.Text>
-
                             </Card.Body>
+                         */}
                         </div>
                     </Col>
                 </Row>
 
 
-                <h3 className='my-2'>Featured Blogs</h3>
+                <h3 className='my-2' style={{ color: '#345159', fontWeight: 800 }}>Featured Blogs</h3>
                 {loadingBlogs ? (<CircularProgress />)
                     : errorBlogs
                         ? (<Message variant='danger'>{errorBlogs}</Message>)

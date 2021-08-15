@@ -8,7 +8,7 @@ const Footer = () => {
                 <Container>
                     <Row style={{ width: '100%' }}>
                         <Col sm={12} md={12} lg={4} xl={4}>
-                            <Navbar.Brand>Contact Details</Navbar.Brand>
+                            <Navbar.Brand>My Little Corner</Navbar.Brand>
                             <ul>
                                 <li style={{ color: 'white' }}>
                                     Email: writetomylittlecorner@gmail.com
@@ -20,7 +20,7 @@ const Footer = () => {
                         </Col>
                         <Col sm={12} md={12} lg={4} xl={4}>
                             <Navbar.Brand>Privacy Policy</Navbar.Brand>
-                            <ul>
+                            <ul style={{ color: 'white' }}>
                                 <li>
                                     <Nav.Link style={{ color: 'white' }} href="/privacypolicy">Privacy Policy</Nav.Link>
                                 </li>
@@ -34,7 +34,7 @@ const Footer = () => {
                         </Col>
                         <Col sm={12} md={12} lg={4} xl={4}>
                             <Navbar.Brand>Social Media Links</Navbar.Brand>
-                            <ul>
+                            <ul style={{ color: 'white' }}>
                                 <li>
                                     <Nav.Link style={{ color: 'white' }} href="https://www.facebook.com">Facebook</Nav.Link>
                                 </li>
@@ -53,7 +53,7 @@ const Footer = () => {
             <Navbar bg="dark" variant="dark">
                 <Col style={{ color: 'white' }} className='text-center py-3'>
                     Copyright &copy; MyLittleCorner <br />
-                    <a href="https://slanzapanika.com" style={{ color: 'white', textTransform: 'capitalize' }}>Designed & Developed By: Darshan (SlanzApanika) </a>
+                    <a href="https://slanzapanika.com" style={{ color: 'white', textTransform: 'capitalize' }}>Designed & Developed By: SlanzApanika </a>
                 </Col>
             </Navbar>
         </footer>
