@@ -35,81 +35,86 @@ const HomeScreen = () => {
     }, [dispatch])
 
     return (
-        <Container className='my-3'>
-            <h2>Get Something Different</h2>
-            <div style={{ height: 20 }} />
-            <Row>
-                <Col xs={12} sm={12} lg={6} xl={6} style={{ padding: 10 }}>
-                    <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/1.webp'} fluid />
-                </Col>
-                <Col xs={12} sm={12} lg={6} xl={6}>
-                    <Row>
-                        <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
-                            <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/2.webp'} fluid />
-                        </Col>
-                        <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
-                            <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/3.webp'} fluid />
-                        </Col>
-                        <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
-                            <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/4.webp'} fluid />
-                        </Col>
-                        <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
-                            <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/5.webp'} fluid />
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-
-            <h2 className='pt-3 my-3'>My Little Corner Categories </h2>
-            <Row>
-                {loadingCategorys ? (<CircularProgress />)
-                    : errorCategorys
-                        ? (<Message variant='danger'>{errorCategorys}</Message>)
-                        :
-                        categorys.map((singleCat) => (
-                            <Col xs={12} sm={6} lg={4} xl={3}>
-                                <Card style={{ padding: 10, margin: 10 }}>
-                                    <div style={{
-                                        display: 'flex', flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={singleCat.image} />
-                                        <Card.Title style={{ margin: 10 }}>{singleCat.name}</Card.Title>
-                                    </div>
-                                    <Card.Body>
-                                        {singleCat.subCategories.map((singleSubCat) => (
-                                            <Card.Text>{singleSubCat}</Card.Text>
-                                        ))}
-                                    </Card.Body>
-                                </Card>
+        <div className='my-3, px-0'>
+            <Container>
+                <h2 style={{ color: '#345159', fontWeight: 800 }}>Get Something Different</h2>
+                <div style={{ height: 20 }} />
+                <Row>
+                    <Col xs={12} sm={12} lg={6} xl={6} style={{ padding: 10 }}>
+                        <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-1.jpg'} fluid />
+                    </Col>
+                    <Col xs={12} sm={12} lg={6} xl={6}>
+                        <Row>
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-4.jpg'} fluid />
                             </Col>
-                        )
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-5.jpg'} fluid />
+                            </Col>
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-2.jpg'} fluid />
+                            </Col>
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-3.jpg'} fluid />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+
+                <h2 className='pt-3 my-3'>My Little Corner Categories </h2>
+                <Row>
+                    {loadingCategorys ? (<CircularProgress />)
+                        : errorCategorys
+                            ? (<Message variant='danger'>{errorCategorys}</Message>)
+                            :
+                            categorys.map((singleCat) => (
+                                <Col xs={12} sm={6} lg={4} xl={3}>
+                                    <Card style={{ padding: 10, margin: 10 }}>
+                                        <div style={{
+                                            display: 'flex', flexDirection: 'row',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Card.Img variant="top" style={{ width: 60, height: 60, borderRadius: 50 }} src={singleCat.image} />
+                                            <Card.Title style={{ margin: 10 }}>{singleCat.name}</Card.Title>
+                                        </div>
+                                        <Card.Body>
+                                            {singleCat.subCategories.map((singleSubCat) => (
+                                                <Card.Text>{singleSubCat}</Card.Text>
+                                            ))}
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            )
+                            )
+                    }
+                </Row>
+            </Container>
+
+            <div style={{ margin: 0, padding: 0, backgroundColor: '#F5F5F5', width: '100%' }}>
+                <center className='mt-3 pt-3'>
+                    <h3 className='mt-3' style={{ color: '#345159', fontWeight: 800 }}>Trending Products</h3>
+                </center>
+                {loadingProducts ? (<CircularProgress />)
+                    : errorProducts
+                        ? (<Message variant='danger'>{errorProducts}</Message>)
+                        : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                            className="owl-theme"
+                            loop
+                            nav
+                            margin={8} autoplay={true} autoplayTimeout={2000}>
+                            {products.map((product) => (
+                                <div key={product._id}>
+                                    <Product product={product} />
+                                </div>
+
+                            ))}
+                        </OwlCarousel>
                         )
                 }
-            </Row>
-
-            <center className='mt-3 pt-3'>
-                <h3 className='mt-3' style={{ color: '#FFD700' }}>5 Star <i className='fas fa-star'></i> Products</h3>
-            </center>
-            {loadingProducts ? (<CircularProgress />)
-                : errorProducts
-                    ? (<Message variant='danger'>{errorProducts}</Message>)
-                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
-                        className="owl-theme"
-                        loop
-                        nav
-                        margin={8} autoplay={true} autoplayTimeout={2000}>
-                        {products.map((product) => (
-                            <div key={product._id}>
-                                <Product product={product} />
-                            </div>
-
-                        ))}
-                    </OwlCarousel>
-                    )
-            }
-
-            <center className='mt-3 pt-3'>
+            </div>
+            <br />
+            <br />
+            {/* <center className='mt-3 pt-3'>
                 <h3 className='mt-3'>Recently Updated Products</h3>
             </center>
             {loadingProducts ? (<CircularProgress />)
@@ -128,108 +133,141 @@ const HomeScreen = () => {
                         ))}
                     </OwlCarousel>
                     )
-            }
+            }*/}
 
-            <center className='mt-3 pt-3'>
-                <h3 className='mt-3'>New Products</h3>
-            </center>
-            {loadingProducts ? (<CircularProgress />)
-                : errorProducts
-                    ? (<Message variant='danger'>{errorProducts}</Message>)
-                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
-                        className="owl-theme"
-                        loop
-                        nav
-                        margin={8} autoplay={true} autoplayTimeout={2000}>
-                        {products.map((product) => (
-                            <div key={product._id}>
-                                <Product product={product} />
-                            </div>
-
-                        ))}
-                    </OwlCarousel>
-                    )
-            }
-
-            <h2 className="py-3 my-3">Little Corner Shopper Favourites</h2>
-
-            <Row>
-                <Col xs={12} sm={6} lg={4} xl={4}>
-                    <div style={{ margin: 10 }}>
-                        <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/herbal.webp'} />
-                        <Card.Body>
-                            <Card.Title>Editor's Pick: Immunity Boosters</Card.Title>
-                            <Card.Text>Herbal Teas, Honey & More</Card.Text>
-
-                        </Card.Body>
-                    </div>
-                </Col>
-
-                <Col xs={12} sm={6} lg={4} xl={4}>
-                    <div style={{ margin: 10 }}>
-                        <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/lemon.webp'} />
-                        <Card.Body>
-                            <Card.Title>Par-Tea Selections</Card.Title>
-                            <Card.Text>Starting at INR 170</Card.Text>
-
-                        </Card.Body>
-                    </div>
-                </Col>
-
-                <Col xs={12} sm={6} lg={4} xl={4}>
-                    <div style={{ margin: 10 }}>
-                        <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/wood.webp'} />
-                        <Card.Body>
-                            <Card.Title>Mission Declutter</Card.Title>
-                            <Card.Text>Portable & Budget-Friendly Storage Organisers</Card.Text>
-
-                        </Card.Body>
-                    </div>
-                </Col>
-            </Row>
-
-
-            <h3 className='my-2'>Featured Blogs</h3>
-            {loadingBlogs ? (<CircularProgress />)
-                : errorBlogs
-                    ? (<Message variant='danger'>{errorBlogs}</Message>)
-                    : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
-                        className="owl-theme"
-                        loop
-                        nav
-                        margin={8} autoplay={true} autoplayTimeout={2000}>
-                        {blogs.map((blog) => (
-                            <div key={blog._id}>
-                                <Blog blog={blog} />
-                            </div>
-
-                        ))}
-                    </OwlCarousel>
-                    )
-            }
-
-            <h3 className='my-2'>Recent Posts</h3>
-            <Row>
-                {loadingPosts ? (<CircularProgress />)
-                    : errorPosts
-                        ? (<Message variant='danger'>{errorPosts}</Message>)
-                        : posts.map((post) => (
-                            <Col xs={12} sm={6} lg={4} xl={3}>
-                                <Card style={{ padding: 10, margin: 10 }}>
-                                    <Card.Img variant="top" src={post.image} />
-                                    <Card.Body>
-                                        <Card.Title>{post.title}</Card.Title>
-                                        <Card.Text>{post.description.substring(0, 80)}.....</Card.Text>
-                                        <Link to={`/post/${post._id}`}>
-                                            <Button variant="primary">Read More</Button>
-                                        </Link>
-                                    </Card.Body>
-                                </Card>
+            <Container>
+                <h2 style={{ color: '#345159', fontWeight: 800 }}>Best of MLC</h2>
+                <Row>
+                    <Col xs={12} sm={12} lg={6} xl={6} style={{ padding: 10 }}>
+                        <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-10.jpg'} fluid />
+                    </Col>
+                    <Col xs={12} sm={12} lg={6} xl={6}>
+                        <Row>
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-8.jpg'} fluid />
                             </Col>
-                        ))
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-7.jpg'} fluid />
+                            </Col>
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-6.jpg'} fluid />
+                            </Col>
+                            <Col xs={6} sm={6} lg={6} xl={6} style={{ padding: 10 }}>
+                                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} src={'/images/banners/mlc-9.jpg'} fluid />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
+
+            <div style={{ margin: 0, padding: 0, backgroundColor: '#F5F5F5', width: '100%' }}>
+                <center className='mt-3 pt-3'>
+                    <h3 className='mt-3'>New Products</h3>
+                </center>
+                {loadingProducts ? (<CircularProgress />)
+                    : errorProducts
+                        ? (<Message variant='danger'>{errorProducts}</Message>)
+                        : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                            className="owl-theme"
+                            loop
+                            nav
+                            margin={8} autoplay={true} autoplayTimeout={2000}>
+                            {products.map((product) => (
+                                <div key={product._id}>
+                                    <Product product={product} />
+                                </div>
+
+                            ))}
+                        </OwlCarousel>
+                        )
                 }
-            </Row>
-        </Container>
+            </div>
+
+
+            <Container>
+                <h2 className="py-3 my-3">Little Corner Shopper Favourites</h2>
+                <Row>
+                    <Col xs={12} sm={6} lg={4} xl={4}>
+                        <div style={{ margin: 10 }}>
+                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/herbal.webp'} />
+                            <Card.Body>
+                                <Card.Title>Editor's Pick: Immunity Boosters</Card.Title>
+                                <Card.Text>Herbal Teas, Honey & More</Card.Text>
+
+                            </Card.Body>
+                        </div>
+                    </Col>
+
+                    <Col xs={12} sm={6} lg={4} xl={4}>
+                        <div style={{ margin: 10 }}>
+                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/lemon.webp'} />
+                            <Card.Body>
+                                <Card.Title>Par-Tea Selections</Card.Title>
+                                <Card.Text>Starting at INR 170</Card.Text>
+
+                            </Card.Body>
+                        </div>
+                    </Col>
+
+                    <Col xs={12} sm={6} lg={4} xl={4}>
+                        <div style={{ margin: 10 }}>
+                            <Card.Img variant="top" style={{ borderRadius: 10 }} src={'/images/banners/wood.webp'} />
+                            <Card.Body>
+                                <Card.Title>Mission Declutter</Card.Title>
+                                <Card.Text>Portable & Budget-Friendly Storage Organisers</Card.Text>
+
+                            </Card.Body>
+                        </div>
+                    </Col>
+                </Row>
+
+
+                <h3 className='my-2'>Featured Blogs</h3>
+                {loadingBlogs ? (<CircularProgress />)
+                    : errorBlogs
+                        ? (<Message variant='danger'>{errorBlogs}</Message>)
+                        : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                            className="owl-theme"
+                            loop
+                            nav
+                            margin={8} autoplay={true} autoplayTimeout={2000}>
+                            {blogs.map((blog) => (
+                                <div key={blog._id}>
+                                    <Blog blog={blog} />
+                                </div>
+
+                            ))}
+                        </OwlCarousel>
+                        )
+                }
+
+                {
+                    /*
+                            <h3 className='my-2'>Recent Posts</h3>
+                            <Row>
+                                {loadingPosts ? (<CircularProgress />)
+                                    : errorPosts
+                                        ? (<Message variant='danger'>{errorPosts}</Message>)
+                                        : posts.map((post) => (
+                                            <Col xs={12} sm={6} lg={4} xl={3}>
+                                                <Card style={{ padding: 10, margin: 10 }}>
+                                                    <Card.Img variant="top" src={post.image} />
+                                                    <Card.Body>
+                                                        <Card.Title>{post.title}</Card.Title>
+                                                        <Card.Text>{post.description.substring(0, 80)}.....</Card.Text>
+                                                        <Link to={`/post/${post._id}`}>
+                                                            <Button variant="primary">Read More</Button>
+                                                        </Link>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        ))
+                                }
+                            </Row>
+                            */
+                }
+            </Container>
+        </div>
     )
 }
 

@@ -51,7 +51,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className='py-0'>
+      <main className='py-0' style={{ marginTop: '90px' }}>
 
         <Route path='/' component={HomeScreen} exact />
 

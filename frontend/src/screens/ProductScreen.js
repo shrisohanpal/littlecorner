@@ -71,7 +71,7 @@ const ProductScreen = ({ history, match }) => {
                                             <Carousel.Item key={k}>
                                                 <div style={{ height: 400 }}>
                                                     <Image style={{ display: 'block', width: '100%', height: '100%', borderRadius: '1%', margin: '0%' }}
-                                                        src={`/api${x}`}
+                                                        src={x}
                                                         alt={product.name} fluid />
                                                 </div>
                                             </Carousel.Item>
@@ -132,7 +132,7 @@ const ProductScreen = ({ history, match }) => {
                                             <Row>
                                                 <Col>
                                                     Status:
-                                    </Col>
+                                                </Col>
                                                 <Col>
                                                     {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
                                                 </Col>
@@ -251,7 +251,7 @@ const ProductScreen = ({ history, match }) => {
                                         variant='primary'
                                     >
                                         Submit
-                      </Button>
+                                    </Button>
                                 </Form>
                             ) : (
                                 <Message>

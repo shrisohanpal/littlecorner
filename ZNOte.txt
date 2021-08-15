@@ -1,3 +1,5 @@
+Base Color: #345159
+
         *WORK DONE ON LITTLE CORNER*
 
     *User*

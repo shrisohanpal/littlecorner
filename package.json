@@ -12,8 +12,8 @@
     "expoapp": "npm start --prefix expoapp",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "app": "concurrently \"npm run server\" \"npm run expoapp\"",
-    "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d",
+    "data:import": "node backend/seeder2",
+    "data:destroy": "node backend/seeder2 -d",
     "data:update": "node backend/update.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },

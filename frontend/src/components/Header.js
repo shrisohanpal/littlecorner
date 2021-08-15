@@ -48,11 +48,13 @@ const Header = () => {
                 <LinkContainer to='/' className='py-0 my-0'>
                     <Navbar.Brand>
                         <Image src='/logo.jpeg' style={{ width: 40, height: 40, borderRadius: 5, margin: 5 }} />
-                        MLC
+                        <text style={{ color: '#ffffff', padding: 0, margin: 0 }}>
+                            MLC
+                        </text>
                     </Navbar.Brand>
                 </LinkContainer>
 
-                <NavDropdown title="Browse" id="basic-nav-dropdown">
+                <NavDropdown title={<text style={{ color: '#ffffff', padding: 0, margin: 0 }}>Browse</text>} id="basic-nav-dropdown">
                     {!loading && !error && (
                         <>
                             {categorys.map((category) => (
@@ -66,30 +68,30 @@ const Header = () => {
                 {window.innerWidth > 768 &&
                     (
                         <><FormControl type="text" placeholder="Search" className="mr-sm-2" style={{ width: window.innerWidth > 768 ? '55%' : '55%' }} onChange={e => setKeyword(e.target.value)} />
-                            <Button type='submit'>Search</Button>
+                            <Button type='submit' style={{ background: '#ffffff', color: '#345159' }}>Search</Button>
                         </>
                     )
                 }
 
                 <div onClick={getUserLocation}>
                     <Nav.Link className={window.innerWidth < 769 && 'px-0 mx-1'}>
-                        <i className='fas fa-map-marker-alt' style={{ fontSize: 30 }}></i>
+                        <i className='fas fa-map-marker-alt' style={{ fontSize: 30, color: '#ffffff' }}></i>
                     </Nav.Link>
                 </div>
                 <LinkContainer to='/cart'>
                     <Nav.Link className={window.innerWidth < 769 && 'px-0 mx-1'}>
-                        <i className='fas fa-cart-plus' style={{ fontSize: 30 }}></i>
+                        <i className='fas fa-cart-plus' style={{ fontSize: 30, color: '#ffffff' }}></i>
                     </Nav.Link>
                 </LinkContainer>
 
-            </Form>
+            </Form >
         )
     }
 
     return (
-        <header>
+        <header className='fixed-top' style={{ backgroundColor: '#345159' }}>
             <Container>
-                <Row className='py-3 my-3'>
+                <Row className='py-3 my-0'>
                     <Route render={({ history }) => <SearchBox history={history} />} />
                 </Row>
             </Container>
