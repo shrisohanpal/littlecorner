@@ -30,6 +30,15 @@ const userSchema = mongoose.Schema(
             type: Boolean,
             required: true,
             default: false
+        },
+        vendorBrand: {
+            type: String
+        },
+        webUrl: {
+            type: String
+        },
+        description: {
+            type: String
         }
     },
     {

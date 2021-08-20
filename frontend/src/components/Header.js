@@ -59,7 +59,19 @@ const Header = () => {
                         <>
                             {categorys.map((category) => (
                                 <LinkContainer to={`/productsbycat/${category._id}`}>
-                                    <NavDropdown.Item key={category._id}>{category.name}</NavDropdown.Item>
+                                    <NavDropdown key={category._id} title={category.name} >
+                                        {
+                                            category.subCategories.map((subCategory) => (
+                                                <NavDropdown key={subCategory} title={subCategory.name}>
+                                                    {
+                                                        subCategory.subSubCats.map((subSubCat) => (
+                                                            <NavDropdown.Item key={subSubCat}>{subSubCat}</NavDropdown.Item>
+                                                        ))
+                                                    }
+                                                </NavDropdown>
+                                            ))
+                                        }
+                                    </NavDropdown>
                                 </LinkContainer>
                             ))}
                         </>

@@ -83,6 +83,22 @@ const CategoryEditScreen = ({ match, history }) => {
     setSubCats([...subCats.filter((subCat) => subCat !== inputSubCat)])
   }
 
+  const deleteHandler2 = (inputSubCat, inputSubSubCat) => {
+
+    const xxx = subCats.find((subCat) => subCat.name == inputSubCat)
+    const xx = xxx.subSubCats.filter((subSubCat) => subSubCat !== inputSubSubCat)
+
+    const arr = []
+
+    subCats.forEach(subCat => {
+      if (subCat.name == inputSubCat) {
+        subCat.subSubCats = xx
+      }
+    });
+
+    setSubCats([...subCats])
+  }
+
 
   return (
     <Container>
@@ -127,11 +143,48 @@ const CategoryEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <h4 className="my-3">Sub Categories</h4>
-            <Table striped bordered hover responsive className='table-sm'>
+            <Table bordered responsive className='table-sm'>
               <tbody>
                 {subCats.map((subCat) => (
                   <tr>
-                    <td> <h6>{subCat}</h6> </td>
+                    <td>
+                      <h5>{subCat.name}</h5>
+                      <Table striped hover responsive className='table-sm'>
+                        <tbody>
+                          {subCat.subSubCats.map((subSubCat) =>
+                            <tr>
+                              <td>
+                                <h6>{subSubCat}</h6>
+                              </td>
+                              <td>
+                                <Button
+                                  variant='danger'
+                                  className='btn-sm'
+                                  onClick={() => deleteHandler2(subCat.name, subSubCat)}
+                                >
+                                  <i className='fas fa-trash'></i>
+                                </Button>
+                              </td>
+                            </tr>
+                          )}
+                          <tr>
+                            <td>
+                              <Form.Control
+                                type='name'
+                                placeholder='Add new Sub Category'
+                                value={newSubCat}
+                                onChange={(e) => setNewSubCat(e.target.value)}
+                              ></Form.Control>
+                            </td>
+                            <td><Button variant='primary' className='btn-sm'
+                              onClick={() => { setSubCats([...subCats, newSubCat]); setNewSubCat('') }}
+                            >
+                              <i className='fas fa-plus-circle'></i>
+                            </Button></td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </td>
                     <td>
                       <Button
                         variant='danger'
@@ -153,7 +206,7 @@ const CategoryEditScreen = ({ match, history }) => {
                     ></Form.Control>
                   </td>
                   <td><Button variant='primary' className='btn-sm'
-                    onClick={() => { setSubCats([...subCats, newSubCat]); setNewSubCat('') }}
+                    onClick={() => { setSubCats([...subCats, { name: newSubCat, subCatCats: [] }]); setNewSubCat('') }}
                   >
                     <i className='fas fa-plus-circle'></i>
                   </Button></td>

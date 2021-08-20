@@ -61,7 +61,7 @@ const App = () => {
         <Route path='/forgotpassword' component={ForgotPassword} />
 
         <Route path='/store' component={StoreScreen} />
-        <Route path='/product/:id' component={ProductScreen} />
+        <Route path='/product/:id?' component={ProductScreen} />
         <Route path='/search/:keyword' component={ProductsScreen} exact />
         <Route path='/productsbycat/:id' component={ProductsByCatScreen} />
         <Route path='/cart/:id?' component={CartScreen} />

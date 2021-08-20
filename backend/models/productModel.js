@@ -15,8 +15,13 @@ const productSchema = mongoose.Schema({
         ref: 'User',
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
+        type: String,
+    },
+    subCategory: {
+        type: String,
+    },
+    subSubCat: {
+        type: String,
     },
     name: {
         type: String,

@@ -13,9 +13,12 @@ const categorySchema = mongoose.Schema(
         image: {
             type: String
         },
-        subCategories: {
-            type: [String]
-        }
+        subCategories: [
+            {
+                name: { type: String },
+                subSubCats: [String]
+            }
+        ]
     }, {
     timestamps: true
 })
