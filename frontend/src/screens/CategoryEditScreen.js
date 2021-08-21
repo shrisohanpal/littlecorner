@@ -15,6 +15,7 @@ const CategoryEditScreen = ({ match, history }) => {
   const [image, setImage] = useState('')
   const [subCats, setSubCats] = useState([])
   const [newSubCat, setNewSubCat] = useState('')
+  const [newSubSubCat, setNewSubSubCat] = useState('')
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
@@ -88,8 +89,6 @@ const CategoryEditScreen = ({ match, history }) => {
     const xxx = subCats.find((subCat) => subCat.name == inputSubCat)
     const xx = xxx.subSubCats.filter((subSubCat) => subSubCat !== inputSubSubCat)
 
-    const arr = []
-
     subCats.forEach(subCat => {
       if (subCat.name == inputSubCat) {
         subCat.subSubCats = xx
@@ -99,6 +98,12 @@ const CategoryEditScreen = ({ match, history }) => {
     setSubCats([...subCats])
   }
 
+  const addSubSubHandler = (inputSubCat, inputSubSubCat) => {
+    const xxx = subCats.find((subCat) => subCat.name == inputSubCat)
+    xxx.subSubCats = [...(xxx.subSubCats), inputSubSubCat]
+    setSubCats([...subCats])
+    setNewSubSubCat('')
+  }
 
   return (
     <Container>
@@ -171,13 +176,13 @@ const CategoryEditScreen = ({ match, history }) => {
                             <td>
                               <Form.Control
                                 type='name'
-                                placeholder='Add new Sub Category'
-                                value={newSubCat}
-                                onChange={(e) => setNewSubCat(e.target.value)}
+                                placeholder='Add new Sub-Sub Category'
+                                value={newSubSubCat}
+                                onChange={(e) => setNewSubSubCat(e.target.value)}
                               ></Form.Control>
                             </td>
                             <td><Button variant='primary' className='btn-sm'
-                              onClick={() => { setSubCats([...subCats, newSubCat]); setNewSubCat('') }}
+                              onClick={() => addSubSubHandler(subCat.name, newSubSubCat)}
                             >
                               <i className='fas fa-plus-circle'></i>
                             </Button></td>
@@ -206,7 +211,7 @@ const CategoryEditScreen = ({ match, history }) => {
                     ></Form.Control>
                   </td>
                   <td><Button variant='primary' className='btn-sm'
-                    onClick={() => { setSubCats([...subCats, { name: newSubCat, subCatCats: [] }]); setNewSubCat('') }}
+                    onClick={() => { setSubCats([...subCats, { name: newSubCat, subSubCats: [] }]); setNewSubCat('') }}
                   >
                     <i className='fas fa-plus-circle'></i>
                   </Button></td>
