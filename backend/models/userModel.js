@@ -12,6 +12,9 @@ const userSchema = mongoose.Schema(
             required: true,
             unique: true,
         },
+        images: {
+            type: [String]
+        },
         password: {
             type: String,
             required: true,
@@ -31,10 +34,10 @@ const userSchema = mongoose.Schema(
             required: true,
             default: false
         },
-        vendorBrand: {
+        webUrl: {
             type: String
         },
-        webUrl: {
+        location: {
             type: String
         },
         description: {
