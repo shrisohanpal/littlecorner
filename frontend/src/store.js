@@ -32,6 +32,19 @@ import {
 } from './reducers/productReducers'
 
 import {
+    vendorListReducer,
+    vendorListByShopReducer,
+    vendorListByVendorReducer,
+    vendorListByCatReducer,
+    vendorDetailsReducer,
+    vendorDeleteReducer,
+    vendorCreateReducer,
+    vendorUpdateReducer,
+    vendorReviewCreateReducer,
+    vendorTopRatedReducer,
+} from './reducers/vendorReducers'
+
+import {
     blogListReducer,
     blogListByShopReducer,
     blogListByVendorReducer,
@@ -96,6 +109,16 @@ const reducer = combineReducers({
     productReviewCreate: productReviewCreateReducer,
     productTopRated: productTopRatedReducer,
     cart: cartReducer,
+
+    vendorList: vendorListReducer,
+    vendorListByShop: vendorListByShopReducer,
+    vendorListByVendor: vendorListByVendorReducer,
+    vendorListByCat: vendorListByCatReducer,
+    vendorDetails: vendorDetailsReducer,
+    vendorDelete: vendorDeleteReducer,
+    vendorCreate: vendorCreateReducer,
+    vendorUpdate: vendorUpdateReducer,
+
 
     blogList: blogListReducer,
     blogListByShop: blogListByShopReducer,

@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import Vendor from '../models/vendorModel.js'
+import Vendor from '../models/userModel.js'
 //import Shop from '../models/shopModel.js'
 
 // @desc    Fetch all vendors

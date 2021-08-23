@@ -8,6 +8,7 @@ import Blog from '../components/Blog'
 import Message from '../components/Message'
 import { listCategorys } from '../actions/categoryActions'
 import { listProducts } from '../actions/productActions'
+import { listVendors } from '../actions/vendorActions'
 import { listBlogs } from '../actions/blogActions'
 import { listPosts } from '../actions/postActions'
 import OwlCarousel from 'react-owl-carousel';
@@ -21,6 +22,9 @@ const HomeScreen = () => {
     const productList = useSelector(state => state.productList)
     const { loading: loadingProducts, error: errorProducts, products } = productList
 
+    const vendorList = useSelector(state => state.vendorList)
+    const { loading: loadingVendor, error: errorVendors, vendors } = vendorList
+
     const blogList = useSelector(state => state.blogList)
     const { loading: loadingBlogs, error: errorBlogs, blogs } = blogList
 
@@ -30,6 +34,7 @@ const HomeScreen = () => {
     useEffect(() => {
         dispatch(listCategorys())
         dispatch(listProducts())
+        dispatch(listVendors())
         dispatch(listBlogs())
         dispatch(listPosts())
     }, [dispatch])
@@ -221,6 +226,32 @@ const HomeScreen = () => {
                         </div>
                     </Col>
                 </Row>
+
+
+
+                <div style={{ margin: 0, padding: 0, backgroundColor: '#F5F5F5', width: '100%' }}>
+                    <center className='mt-3 pt-3'>
+                        <h3 className='mt-3' style={{ color: '#345159', fontWeight: 800 }}>Our Vendors</h3>
+                    </center>
+                    {loadingVendor ? (<CircularProgress />)
+                        : errorVendors
+                            ? (<Message variant='danger'>{errorVendors}</Message>)
+                            : (<OwlCarousel items={window.innerWidth > 780 ? 4 : 2}
+                                className="owl-theme"
+                                loop
+                                nav
+                                margin={8} autoplay={true} autoplayTimeout={2000}>
+                                {vendors.map((vendor) => (
+                                    <div key={vendor._id}>
+                                        <Product product={vendor} />
+                                    </div>
+
+                                ))}
+                            </OwlCarousel>
+                            )
+                    }
+                </div>
+
 
 
                 <h3 className='my-2' style={{ color: '#345159', fontWeight: 800 }}>Featured Blogs</h3>

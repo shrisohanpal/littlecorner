@@ -12,6 +12,7 @@ import categoryRoutes from './routes/categoryRoutes.js'
 import blogRoutes from './routes/blogRoutes.js'
 import postRoutes from './routes/postRoutes.js'
 import productRoutes from './routes/productRoutes.js'
+import vendorRoutes from './routes/vendorRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
@@ -33,6 +34,7 @@ app.use('/api/categorys', categoryRoutes)
 app.use('/api/blogs', blogRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/products', productRoutes)
+app.use('/api/vendors', vendorRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/upload', uploadRoutes)
 
