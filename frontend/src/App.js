@@ -17,6 +17,7 @@ import ProductsScreen from './screens/ProductsScreen'
 import ProductsByCatScreen from './screens/ProductsByCatScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 
+import VendorScreen from './screens/VendorScreen'
 import BlogScreen from './screens/BlogScreen'
 import BlogListScreen from './screens/BlogListScreen'
 import BlogEditScreen from './screens/BlogEditScreen'
@@ -62,6 +63,7 @@ const App = () => {
 
         <Route path='/store' component={StoreScreen} />
         <Route path='/product/:id?' component={ProductScreen} />
+        <Route path='/vendor/:id?' component={VendorScreen} />
         <Route path='/search/:keyword' component={ProductsScreen} exact />
         <Route path='/productsbycat/:id' component={ProductsByCatScreen} />
         <Route path='/cart/:id?' component={CartScreen} />

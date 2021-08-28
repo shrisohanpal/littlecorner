@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Carousel, Image, Container, Card, Button } from 'react-bootstrap'
 import { CircularProgress } from '@material-ui/core'
 import Product from '../components/Product'
+import Vendor from '../components/Vendor'
 import Blog from '../components/Blog'
 import Message from '../components/Message'
 import { listCategorys } from '../actions/categoryActions'
@@ -243,7 +244,7 @@ const HomeScreen = () => {
                                 margin={8} autoplay={true} autoplayTimeout={2000}>
                                 {vendors.map((vendor) => (
                                     <div key={vendor._id}>
-                                        <Product product={vendor} />
+                                        <Vendor vendor={vendor} />
                                     </div>
 
                                 ))}
